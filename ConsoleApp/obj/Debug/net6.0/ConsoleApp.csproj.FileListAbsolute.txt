@@ -1,0 +1,15 @@
+/workspaces/CS_consoleApp/ConsoleApp/bin/Debug/net6.0/ConsoleApp
+/workspaces/CS_consoleApp/ConsoleApp/bin/Debug/net6.0/ConsoleApp.deps.json
+/workspaces/CS_consoleApp/ConsoleApp/bin/Debug/net6.0/ConsoleApp.runtimeconfig.json
+/workspaces/CS_consoleApp/ConsoleApp/bin/Debug/net6.0/ConsoleApp.dll
+/workspaces/CS_consoleApp/ConsoleApp/bin/Debug/net6.0/ConsoleApp.pdb
+/workspaces/CS_consoleApp/ConsoleApp/obj/Debug/net6.0/ConsoleApp.csproj.AssemblyReference.cache
+/workspaces/CS_consoleApp/ConsoleApp/obj/Debug/net6.0/ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/CS_consoleApp/ConsoleApp/obj/Debug/net6.0/ConsoleApp.AssemblyInfoInputs.cache
+/workspaces/CS_consoleApp/ConsoleApp/obj/Debug/net6.0/ConsoleApp.AssemblyInfo.cs
+/workspaces/CS_consoleApp/ConsoleApp/obj/Debug/net6.0/ConsoleApp.csproj.CoreCompileInputs.cache
+/workspaces/CS_consoleApp/ConsoleApp/obj/Debug/net6.0/ConsoleApp.dll
+/workspaces/CS_consoleApp/ConsoleApp/obj/Debug/net6.0/refint/ConsoleApp.dll
+/workspaces/CS_consoleApp/ConsoleApp/obj/Debug/net6.0/ConsoleApp.pdb
+/workspaces/CS_consoleApp/ConsoleApp/obj/Debug/net6.0/ConsoleApp.genruntimeconfig.cache
+/workspaces/CS_consoleApp/ConsoleApp/obj/Debug/net6.0/ref/ConsoleApp.dll
