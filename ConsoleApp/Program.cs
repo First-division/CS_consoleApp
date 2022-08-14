@@ -4,16 +4,59 @@ using System.Threading;
 
 
 namespace Program{
-    class MainCLass{
+    public class MainCLass{
+        
+        
         public static void Main(){
 
-            Pokemon Charmander = new Pokemon();
-            Charmander.Name = "Charmander";
-            Charmander.level = 1;
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("would you like too pick a starter pokemon? you have 3 choicse");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($" {Pokadex["Charmander"]}? (1) \n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("open your Bag? (2) \n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Flee? (3) \n");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            ConsoleKey Starter = Console.ReadKey(true).Key;
+
+            if(Starter == ConsoleKey.D1){
+                Console.WriteLine($"you choose {Pokadex["Charmander"]}}!!");
+                CurrentParty.Add("", (100, 100));
+            }
             
+            
+            Pokemon.PlayerMove();
 
         }
+        
+        public static Dictionary<string, (int lvl, int Exp, bool Active)> Pokadex = new Dictionary<string, (int lvl, int Exp, bool Active)>{
+            { "Charmander", (0, 0, false)},
+            { "Squirtle", (0, 0, false)},
+            { "Bulbasaur", (0, 0, false)},
+            { "Pikachu", (0, 0, false)}
+        };
 
+        //public static Dictionary<string, (int lvl, int Exp)> PlayerPokadex = new Dictionary<string, (int lvl, int Exp)>{};
+
+        public static Dictionary<string, (int lvl, int Exp)> CurrentParty = new Dictionary<string, (int lvl, int Exp)>{};
+        
+        public static Dictionary<string, (int RestoreAmount, int Amount)> Bag = new Dictionary<string, (int RestoreAmount, int Amount)>{};
+
+        public static Dictionary<string, (int RestoreAmount, int Amount)> Shop = new Dictionary<string, (int RestoreAmount, int Amount)>{};
+
+
+
+       /* public static Dictionary<string, (int price, int Amount)>  gints = new Dictionary<string, (int Price, int Amount)>
+        {
+            {"Attack Points: ", (10, 0)},
+            {"Defense Points: ", (10, 0)},
+            {"Super Points: ", (10, 0)},
+            {"N / A", (10, 0)}
+        };
+        */
         
     } 
 
@@ -31,34 +74,63 @@ namespace Program{
         public int Move2_attack;
         public int Move3_attack;
 
-        public static void Rome(){
+        public static bool PlayerAttack = false;
+        public static bool PlayerBag = false;
+        public static bool PlayerFlee = false;
+
+        public static void TallGrass(){
             Random Rnd = new Random();
             int FindPokemon = Rnd.Next(1, 5);
 
             if(FindPokemon == 1){
-                fight_1();
+                //fight_1();
             }
             if(FindPokemon == 2){
-                Fight_2();
+                //Fight_2();
             }
             if(FindPokemon == 3){
-                Fight_3();
+                //Fight_3();
             }
             if(FindPokemon == 3){
-                Fight_4();
+                //Fight_4();
             }
             if(FindPokemon == 3){
-                Fight_5();
+                //Fight_5();
             }
 
         }
 
-        public static void Move(){
+        public static void PlayerMove(){
             
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Would you like too.... press the number to sleact your option \n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("fight? (1) \n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("open your Bag? (2) \n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Flee? (3) \n");
+            Console.ForegroundColor = ConsoleColor.White;
 
-            
+            ConsoleKey Move = Console.ReadKey(true).Key;
 
-            //Console.WriteLine("would you like too attack?");
+            if(Move == ConsoleKey.D1){ // for fight
+                Console.WriteLine($"you are now fighting with: {}");
+                PlayerAttack = true;
+            }
+            if(Move == ConsoleKey.D2){ // for Bag
+                Console.WriteLine("");
+            }
+            if(Move == ConsoleKey.D3){ // for Flee
+                Console.WriteLine("");
+            }
+
+        }
+
+        public static void SystemMove(){
+            if(PlayerFlee == true){
+                
+            }
         }
     }
 }
