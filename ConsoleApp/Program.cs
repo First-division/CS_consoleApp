@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Linq;
 
 
 namespace Program{
@@ -9,6 +10,9 @@ namespace Program{
         
         public static void Main(){
 
+            //var Pokadex = CurrentParty.ToDictionary(kv => kv.Key, kv => kv.Value);
+
+            
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("would you like too pick a starter pokemon? you have 3 choicse");
@@ -23,20 +27,32 @@ namespace Program{
             ConsoleKey Starter = Console.ReadKey(true).Key;
 
             if(Starter == ConsoleKey.D1){
-                Console.WriteLine($"you choose {Pokadex["Charmander"]}}!!");
-                CurrentParty.Add("", (100, 100));
+                Console.WriteLine($"you choose {Pokadex["Charmander"]}!!");
+
+                CurrentParty.Add("Charmander", Pokadex["Charmander"]);
+                //Pokadex.Remove("key");
+                
+
+
+                foreach(var Name in Pokadex){
+                    Console.WriteLine(Name.Key + Name.Value.Exp + Name.Value.lvl);
+                }
+
+                foreach(var Name in CurrentParty){
+                    Console.WriteLine(Name.Key + Name.Value.Exp + Name.Value.lvl);
+                }
             }
             
             
-            Pokemon.PlayerMove();
+            
 
         }
         
-        public static Dictionary<string, (int lvl, int Exp, bool Active)> Pokadex = new Dictionary<string, (int lvl, int Exp, bool Active)>{
-            { "Charmander", (0, 0, false)},
-            { "Squirtle", (0, 0, false)},
-            { "Bulbasaur", (0, 0, false)},
-            { "Pikachu", (0, 0, false)}
+        public static Dictionary<string, (int lvl, int Exp)> Pokadex = new Dictionary<string, (int lvl, int Exp)>{
+            { "Charmander", (0, 0)},
+            { "Squirtle", (0, 0)},
+            { "Bulbasaur", (0, 0)},
+            { "Pikachu", (0, 0)}
         };
 
         //public static Dictionary<string, (int lvl, int Exp)> PlayerPokadex = new Dictionary<string, (int lvl, int Exp)>{};
@@ -115,7 +131,7 @@ namespace Program{
             ConsoleKey Move = Console.ReadKey(true).Key;
 
             if(Move == ConsoleKey.D1){ // for fight
-                Console.WriteLine($"you are now fighting with: {}");
+                Console.WriteLine($"you are now fighting with: " /* {pokemons name}*/ );
                 PlayerAttack = true;
             }
             if(Move == ConsoleKey.D2){ // for Bag
