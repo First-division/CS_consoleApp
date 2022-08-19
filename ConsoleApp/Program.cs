@@ -5,10 +5,15 @@ using System.Collections;
 namespace Program{
     public class MainClass{
         
-        static Pokemon Charmander = new Pokemon(exp: 0, level: 1, health: 69, name: "Charmander", move1_name: "Ember", move2_name: "Scratch", move3_name: "Rush", move1_attack: 19, move2_attack: 13, move3_attack: 12);
-        static Pokemon Squirtle = new Pokemon(exp: 0, level: 1, health: 67,name: "Squirtle", move1_name: "Water gun", move2_name: "Rush", move3_name: "scratch", move1_attack: 17, move2_attack: 15, move3_attack: 14);
-        static Pokemon blubasaur = new Pokemon(exp: 0, level: 1, health: 65,name: "blubasaur", move1_name: "Vine wip", move2_name: "Seed bomb", move3_name: "scratch", move1_attack: 18, move2_attack: 15, move3_attack: 13);
-        
+        static Pokemon Charmander = new Pokemon(exp: 0, level: 1, health: Pokemon.RndHealth(), name: "Charmander", Idnumber: 004, move1_name: "Ember", move2_name: "Scratch", move3_name: "Rush", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Squirtle = new Pokemon(exp: 0, level: 1, health: Pokemon.RndHealth(),name: "Squirtle", Idnumber: 007,move1_name: "Water gun", move2_name: "Rush", move3_name: "scratch", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon blubasaur = new Pokemon(exp: 0, level: 1, health: Pokemon.RndHealth(),name: "blubasaur", Idnumber: 001, move1_name: "Vine wip", move2_name: "Seed bomb", move3_name: "scratch", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Pigy = new Pokemon(exp: 0, level: 1, health: Pokemon.RndHealth(),name: "Pigy", Idnumber: 000, move1_name: "Wind slash", move2_name: "Tackle", move3_name: "kick", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Eevee = new Pokemon(exp: 0, level: 1, health: Pokemon.RndHealth(),name: "Eevee", Idnumber: 133, move1_name: "tackle", move2_name: "Tail Wip", move3_name: "Bite", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Cterpie = new Pokemon(exp: 0, level: 1, health: Pokemon.RndHealth(),name: "Capterpie", Idnumber: 010, move1_name: "Bug Bite", move2_name: "String Shoot", move3_name: "Nap", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Geodude = new Pokemon(exp: 0, level: 1, health: Pokemon.RndHealth(),name: "Geodude", Idnumber: 074, move1_name: "Rockc Punch", move2_name: "Light Punch", move3_name: "", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Houndour = new Pokemon(exp: 0, level: 1, health: Pokemon.RndHealth(),name: "Houndour", Idnumber: 228, move1_name: "Dark Flare", move2_name: "Dark Bite", move3_name: "howel", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+
         
         
 
@@ -16,69 +21,131 @@ namespace Program{
         
         
         public static void Main(){
-    
-            
+
+            Pokemon.PlayerMove();
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n would you like too pick a starter pokemon? you have 3 choicse \n");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Your first choice is {Charmander.Name} (1)");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"Your second choice {MainClass.Squirtle.Name} (2)");
+            Console.WriteLine($"Your second choice is {MainClass.Squirtle.Name} (2)");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"{MainClass.blubasaur.Name} (3)");
+            Console.WriteLine($" Your third choice is {MainClass.blubasaur.Name} (3)");
             Console.ForegroundColor = ConsoleColor.White;
 
-            ConsoleKey Starter = Console.ReadKey(true).Key;
+            var Starter = Console.ReadKey(true).Key;
 
-            if(Starter == ConsoleKey.D1){
+            switch (Starter) {
+                case ConsoleKey.D1 or ConsoleKey.NumPad1:
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"you choose {MainClass.Charmander.Name}");
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"Your {MainClass.Charmander.Name} is level {MainClass.Charmander.Level} and has {MainClass.Charmander.Exp} Exp. \n This pokemon also has 3 moves. {MainClass.Charmander.Move1_Name} and it does {MainClass.Charmander.Move1_Attack} damage \n {MainClass.Charmander.Move2_Name} and it does {MainClass.Charmander.Move2_Attack} damge \n {MainClass.Charmander.Move3_Name} and it does {MainClass.Charmander.Move3_Attack} damage");
+                // add the pokemon to the list
+                break;
 
-                Console.WriteLine($"Your {MainClass.Charmander.Name} is level {MainClass.Charmander.Level} and has {MainClass.Charmander.Exp} Exp. \n it also has 3 moves. they are {MainClass.Charmander.Move1_Name} and it does {MainClass.Charmander.Move1_Attack} \n {MainClass.Charmander.Move2_Name} and it does {MainClass.Charmander.Move2_Attack} \n {MainClass.Charmander.Move3_Name} and it does {MainClass.Charmander.Move3_Attack}");
-                
-                Console.WriteLine("Would you like to go out and lok for pokemon too battle and catch?");
+                case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"you choose {MainClass.Squirtle.Name}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"Your {MainClass.Squirtle.Name} is level {MainClass.Squirtle.Level} and has {MainClass.Squirtle.Exp} Exp. \n This pokemon also has 3 moves. {MainClass.Squirtle.Move1_Name} and it does {MainClass.Squirtle.Move1_Attack} damage \n {MainClass.Squirtle.Move2_Name} and it does {MainClass.Squirtle.Move2_Attack} damge \n {MainClass.Squirtle.Move3_Name} and it does {MainClass.Squirtle.Move3_Attack} damage");
+                // add the pokemon to the list
+                break;
 
-                ConsoleKey Grass = Console.ReadKey(true).Key;
-
-                if(Grass == ConsoleKey.D1){
-                    Pokemon.TallGrass();
-                    
-                    
-                }
-                
+                case ConsoleKey.D3 or ConsoleKey.NumPad3:
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"you choose {MainClass.Squirtle.Name}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"Your {MainClass.blubasaur.Name} is level {MainClass.blubasaur.Level} and has {MainClass.blubasaur.Exp} Exp. \n This pokemon also has 3 moves. {MainClass.blubasaur.Move1_Name} and it does {MainClass.blubasaur.Move1_Attack} damage \n {MainClass.blubasaur.Move2_Name} and it does {MainClass.blubasaur.Move2_Attack} damge \n {MainClass.blubasaur.Move3_Name} and it does {MainClass.blubasaur.Move3_Attack} damage");
+                // add the pokemon to the list
+                break;
                 
             }
+
+            Console.WriteLine("Would you like to go out and lok for pokemon too battle and catch?");
+            var input3 = Console.ReadKey(true).KeyChar;
+            switch(input3) {
+                case '1':
+                Console.WriteLine("your now going to into the tall grass too look for pokemon to catch");
+                TallGrass();
+                break;
+                
+            }
+            
+            
          
         }
+
+        // public static ConsoleKey grass = Console.ReadKey(true).Key;
 
         
 
         //public static Dictionary<string, (int lvl, int Exp)> PlayerPokadex = new Dictionary<string, (int lvl, int Exp)>{};
 
-        //public static Dictionary<string, (int lvl, int Exp)> CurrentParty = new Dictionary<string, (int lvl, int Exp)>();
+        //public static Dictionary<string, MainClass.blubasaur()> CurrentParty = new Dictionary (string, MainClass.blubasaur());
         
         //public static Dictionary<string, (int RestoreAmount, int Amount)> Bag = new Dictionary<string, (int RestoreAmount, int Amount)>();
 
         //public static Dictionary<string, (int RestoreAmount, int Amount)> Shop = new Dictionary<string, (int RestoreAmount, int Amount)>();
 
+        public static void TallGrass(){
+            var pokemonNumber = Pokemon.FindPokemon();
+
+            switch (pokemonNumber)
+            {
+                case 1:
+                Console.WriteLine($"Your now Fighting {MainClass.Pigy.Name} \n and it level {MainClass.Pigy.Level}");
+
+                Pokemon.PlayerMove();
+                break;
+
+                case 2:
+                Console.WriteLine($"Your now Fighting {MainClass.Eevee.Name} \n and it level {MainClass.Eevee.Level}");
+
+                Pokemon.PlayerMove();
+                break;
+
+                case 3:
+                Console.WriteLine($"Your now Fighting {MainClass.Eevee.Name} \n and it level {MainClass.Eevee.Level}");
+
+                Pokemon.PlayerMove();
+                break;
+
+                case 4:
+                Console.WriteLine($"Your now Fighting {MainClass.Eevee.Name} \n and it level {MainClass.Eevee.Level}");
+
+                Pokemon.PlayerMove();
+                break;
+
+                case 5:
+                Console.WriteLine($"Your now Fighting {MainClass.Eevee.Name} \n and it level {MainClass.Eevee.Level}");
+
+                Pokemon.PlayerMove();
+                break;
+            
+            }
+            
+
+        }
         
     } 
 
     class Pokemon{
 
+        
 
         public int Health { get; set; }
         public float Exp { get; set; }
         public int Level { get; set; }
         public string Name { get; set; }
-        public Pokemon(float exp, int level, int health, string name, string move1_name,string move2_name, string move3_name, int move1_attack, int move2_attack, int move3_attack)
+        public Pokemon(float exp, int level, int health, string name, int Idnumber, string move1_name,string move2_name, string move3_name, int move1_attack, int move2_attack, int move3_attack)
         {
             this.Health = health;
             this.Exp = exp;
             this.Level = level;
             this.Name = name;
+            this.IDNumber = Idnumber;
 
             this.Move1_Name = move1_name;
             this.Move2_Name = move2_name;
@@ -100,58 +167,20 @@ namespace Program{
         public int Move1_Attack { get; set; }
         public int Move2_Attack { get; set; }
         public int Move3_Attack { get; set; }
+        public int IDNumber { get; set; }
 
         public static bool PlayerAttack = false;
         public static bool PlayerBag = false;
         public static bool PlayerFlee = false;
 
         public static int FindPokemon() => Random.Shared.Next(1, 5);
+        public static int RndHealth() => Random.Shared.Next(32, 69);
+        public static int RndAttack() => Random.Shared.Next(13, 41);
 
-        public static void TallGrass(){
-            var pokemonNumber = FindPokemon();
+        public static float FleeOrNotToFlee => Random.Shared.Next(0, 101);
+        
 
-            switch (pokemonNumber)
-            {
-                case 1:
-                Fight1();
-                break;
-
-                case 2:
-                Fight2();
-                break;
-
-                case 3:
-                Fight3();
-                break;
-
-                case 4:
-                Fight4();
-                break;
-
-                case 5:
-                Fight5();
-                break;
-            
-            }
-            
-
-        }
-
-        public static void Fight1(){
-            Console.WriteLine("1");
-        }
-        public static void Fight2(){
-            Console.WriteLine("2");
-        }
-        public static void Fight3(){
-            Console.WriteLine("3");
-        }
-        public static void Fight4(){
-            Console.WriteLine("4");
-        }
-        public static void Fight5(){
-            Console.WriteLine("5");
-        }
+        
 
         public static void PlayerMove(){
             
@@ -165,20 +194,34 @@ namespace Program{
             Console.WriteLine("Flee? (3) \n");
             Console.ForegroundColor = ConsoleColor.White;
 
-            ConsoleKey Move = Console.ReadKey(true).Key;
+            var PMove = Console.ReadKey(true).Key;
 
-            if(Move == ConsoleKey.D1){ // for fight
-                Console.WriteLine($"you are now fighting with: " /* {pokemons name}*/ );
-                Pokemon.TallGrass();
+            //fractem
+
+            switch (PMove) {
+                case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
                 PlayerAttack = true;
-            }
-            if(Move == ConsoleKey.D2){ // for Bag
-                Console.WriteLine("");
-            }
-            if(Move == ConsoleKey.D3){ // for Flee
-                Console.WriteLine("");
-            }
 
+                break;
+
+                case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                PlayerBag = true;
+
+                break;
+
+                case ConsoleKey.D3 or ConsoleKey.NumPad3:
+                PlayerFlee = true;
+                if (FleeOrNotToFlee < 50f) {
+                    Console.WriteLine("you got away!");
+                    Console.WriteLine(FleeOrNotToFlee);
+                }
+                else if (FleeOrNotToFlee > 50f) {
+                    Console.WriteLine("you didin't get away");
+                    Console.WriteLine(FleeOrNotToFlee);
+                }
+
+                break;
+            }
         }
 
         public static void SystemMove(){
@@ -187,10 +230,22 @@ namespace Program{
             }
         }
 
-        private List<Pokemon> internalList = new List<Pokemon>();
-        //public class PokemonParty : IReadOnlyList<Pokemon>{
-            
-     //   }
+        public class PokemonParty : IReadOnlyList<Pokemon>
+        {
+            private List<Pokemon> internalList = new List<Pokemon>();
+
+            Pokemon IReadOnlyList<Pokemon>.this[int index] => internalList[index];
+
+            public int Count => internalList.Count;
+
+            public IEnumerator GetEnumerator() {
+                return internalList.GetEnumerator();
+            }
+
+            IEnumerator<Pokemon> IEnumerable<Pokemon>.GetEnumerator() {
+                return internalList.GetEnumerator();
+            }
+        }
     }
 
     
