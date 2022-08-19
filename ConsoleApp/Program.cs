@@ -22,7 +22,14 @@ namespace Program{
         
         public static void Main(){
 
-            Pokemon.PlayerMove();
+            
+            //var pikachu = new Pokemon( /* Omitted: parameters for creating a new Pokemon */ );
+
+            
+            
+            // Omitted: Add more Pokemon
+
+            
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n would you like too pick a starter pokemon? you have 3 choicse \n");
@@ -34,6 +41,7 @@ namespace Program{
             Console.WriteLine($" Your third choice is {MainClass.blubasaur.Name} (3)");
             Console.ForegroundColor = ConsoleColor.White;
 
+            var party = new Pokemon.PokemonParty();
             var Starter = Console.ReadKey(true).Key;
 
             switch (Starter) {
@@ -42,7 +50,11 @@ namespace Program{
                 Console.WriteLine($"you choose {MainClass.Charmander.Name}");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"Your {MainClass.Charmander.Name} is level {MainClass.Charmander.Level} and has {MainClass.Charmander.Exp} Exp. \n This pokemon also has 3 moves. {MainClass.Charmander.Move1_Name} and it does {MainClass.Charmander.Move1_Attack} damage \n {MainClass.Charmander.Move2_Name} and it does {MainClass.Charmander.Move2_Attack} damge \n {MainClass.Charmander.Move3_Name} and it does {MainClass.Charmander.Move3_Attack} damage");
-                // add the pokemon to the list
+                party.Add(Charmander);
+                var isInParty = Pokemon.IsPokemonInParty(party, Charmander);     // TRUE
+                
+                
+
                 break;
 
                 case ConsoleKey.D2 or ConsoleKey.NumPad2:
@@ -63,12 +75,16 @@ namespace Program{
                 
             }
 
-            Console.WriteLine("Would you like to go out and lok for pokemon too battle and catch?");
-            var input3 = Console.ReadKey(true).KeyChar;
-            switch(input3) {
-                case '1':
+            Console.WriteLine("Would you like to go out and lok for pokemon too battle and catch? (1)\n or chanllage the gym leader of the first gym? (2)");
+                var input3 = Console.ReadKey(true).Key;
+                switch(input3) {
+                case ConsoleKey.D1 or ConsoleKey.NumPad1:
                 Console.WriteLine("your now going to into the tall grass too look for pokemon to catch");
                 TallGrass();
+                break;
+
+                case ConsoleKey.D2 or ConsoleKey.NumPad2:
+
                 break;
                 
             }
@@ -131,7 +147,7 @@ namespace Program{
         
     } 
 
-    class Pokemon{
+    class Pokemon {
 
         
 
@@ -180,9 +196,16 @@ namespace Program{
         public static float FleeOrNotToFlee => Random.Shared.Next(0, 101);
         
 
-        
+        public static bool IsPokemonInParty(IReadOnlyList<Pokemon> party, Pokemon pokemon) {
+            foreach(var partyMember in party) {
+                if (partyMember == pokemon)
+                return true;
+            }
 
-        public static void PlayerMove(){
+            return false;
+        }
+
+        public static void PlayerMove() {
             
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Would you like too.... press the number to sleact your option \n");
@@ -196,7 +219,7 @@ namespace Program{
 
             var PMove = Console.ReadKey(true).Key;
 
-            //fractem
+            //fractem 
 
             switch (PMove) {
                 case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
@@ -224,7 +247,7 @@ namespace Program{
             }
         }
 
-        public static void SystemMove(){
+        public static void SystemMove() {
             if(PlayerFlee == true){
                 
             }
@@ -232,7 +255,7 @@ namespace Program{
 
         public class PokemonParty : IReadOnlyList<Pokemon>
         {
-            private List<Pokemon> internalList = new List<Pokemon>();
+            public static List<Pokemon> internalList = new List<Pokemon>();
 
             Pokemon IReadOnlyList<Pokemon>.this[int index] => internalList[index];
 
@@ -244,6 +267,14 @@ namespace Program{
 
             IEnumerator<Pokemon> IEnumerable<Pokemon>.GetEnumerator() {
                 return internalList.GetEnumerator();
+            }
+
+            public void Add(Pokemon pokemon) {
+                internalList.Add(pokemon);
+            }
+
+            public void Remove(Pokemon pokemon) {
+                internalList.Remove(pokemon);
             }
         }
     }
@@ -260,12 +291,7 @@ namespace Program{
         And is a way that you can reference the type of other classes.
         You could do it differently, since there's only up to 6 pokemon in a party.
         */
-    
-    
-
-          
 }
-
 
 /* 
 
