@@ -52,7 +52,9 @@ namespace Program{
                 Console.WriteLine($"Your {MainClass.Charmander.Name} is level {MainClass.Charmander.Level} and has {MainClass.Charmander.Exp} Exp. \n This pokemon also has 3 moves. {MainClass.Charmander.Move1_Name} and it does {MainClass.Charmander.Move1_Attack} damage \n {MainClass.Charmander.Move2_Name} and it does {MainClass.Charmander.Move2_Attack} damge \n {MainClass.Charmander.Move3_Name} and it does {MainClass.Charmander.Move3_Attack} damage");
                 party.Add(Charmander);
                 var isInParty = Pokemon.IsPokemonInParty(party, Charmander);     // TRUE
-                
+                Console.WriteLine(string.Join(", ", party));
+                Console.WriteLine(string.Join(", ", Pokemon.PokemonParty.internalList));
+
                 
 
                 break;
