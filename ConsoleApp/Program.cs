@@ -145,12 +145,69 @@ namespace Program {
 
         //public static Dictionary<string, (int RestoreAmount, int Amount)> Shop = new Dictionary<string, (int RestoreAmount, int Amount)>();
 
+        public static float FleeOrNotToFlee => Random.Shared.Next(0, 101);
+        public static float CatchOrNotCatched => Random.Shared.Next(0, 101);
+
         public static void TallGrass() {
             var pokemonNumber = Pokemon.FindPokemon();
+            bool Caught;
 
             switch (pokemonNumber) {
                 case 1:
                 Console.WriteLine($"Your now Fighting {MainClass.Pigy.Name} \n and it level {MainClass.Pigy.Level}");
+
+                while (Caught = true || MainClass.Pigy.Health <= 0 || Pokemon.PokemonParty.internalList[0].Health <= 0 || Pokemon.PokemonParty.internalList[1].Health <= 0 || Pokemon.PokemonParty.internalList[2].Health <= 0) {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Would you like too.... press the number to sleact your option \n");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("fight? (1) \n");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("open your Bag? (2) \n");
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"Catch the {MainClass.Pigy.Name}? (3) \n");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Flee? (4) \n");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    var PMove = Console.ReadKey(true).Key;
+
+                    //fractem 
+
+                    switch (PMove) {
+                        case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
+                        Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
+                        Console.WriteLine(Pokemon.PokemonParty.internalList[0].Name);
+
+                        break;
+
+                        case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                        
+                        // make a new class full of itams and healing props with a list called "Bag"
+                        Console.WriteLine("what do you want to do in your bag? you have {bag let them heal pokemon and or do nothing}");
+                        break;
+
+                        case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
+                        if(CatchOrNotCatched <= 50f){
+                            Console.WriteLine($"You Catched the {MainClass.Pigy.Name}!!");  
+                        }
+                        break;
+
+                        case ConsoleKey.D4 or ConsoleKey.NumPad4: // flee
+                        if (FleeOrNotToFlee < 50f) {
+                            Console.WriteLine("you got away!");
+                            Console.WriteLine(FleeOrNotToFlee);
+                        }
+                        else if (FleeOrNotToFlee > 50f) {
+                            Console.WriteLine("you didin't get away");
+                            Console.WriteLine(FleeOrNotToFlee);
+                        }
+
+                        break;
+                
+                
+                    }
+                    break;
+                }
 
                 Pokemon.PlayerMove();
                 break;
@@ -232,7 +289,7 @@ namespace Program {
         public static int RndHealth() => Random.Shared.Next(39, 69);
         public static int RndAttack() => Random.Shared.Next(13, 41);
 
-        public static float FleeOrNotToFlee => Random.Shared.Next(0, 101);
+       
         
 
         public static bool IsPokemonInParty(IReadOnlyList<Pokemon> party, Pokemon pokemon) {
@@ -250,45 +307,7 @@ namespace Program {
 
         public static void PlayerMove() {
             
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Would you like too.... press the number to sleact your option \n");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("fight? (1) \n");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("open your Bag? (2) \n");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Flee? (3) \n");
-            Console.ForegroundColor = ConsoleColor.White;
-
-            var PMove = Console.ReadKey(true).Key;
-
-            //fractem 
-
-            switch (PMove) {
-                case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
-                PlayerAttack = true;
-
-                break;
-
-                case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                PlayerBag = true;
-                // make a new class full of itams and healing props with a list called "Bag"
-                Console.WriteLine("what do you want to do in your bag? you have {bag let them heal pokemon and or do nothing}");
-                break;
-
-                case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                PlayerFlee = true;
-                if (FleeOrNotToFlee < 50f) {
-                    Console.WriteLine("you got away!");
-                    Console.WriteLine(FleeOrNotToFlee);
-                }
-                else if (FleeOrNotToFlee > 50f) {
-                    Console.WriteLine("you didin't get away");
-                    Console.WriteLine(FleeOrNotToFlee);
-                }
-
-                break;
-            }
+            
         }
 
         public static void SystemMove() {
