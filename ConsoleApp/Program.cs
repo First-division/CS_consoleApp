@@ -16,9 +16,10 @@ namespace Program {
         static Pokemon Torrcat = new Pokemon(exp: 0, level: 1, health: Pokemon.RndHealth(), name: "Torrcat", Idnumber: 726, move1_name: "Fire Fang", move2_name: "Claw Slash", move3_name: "FlameThrower", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
         
         
-        public Bag SmllHeal = new Bag(name: "Small Heal", amount: 1, decript: "Heals 20 Health of any 1 pokemon per item");
-        public Bag MedHeal = new Bag(name: "Med Heal", amount: 1, decript: "Heals 40 Health of any 1 pokemon per item");
-        public Bag FullHeal = new Bag(name: "Full Heal", amount: 1, decript: "Heals ALL Health of any 1 pokemon per item");
+        public static Bag SmllHeal = new Bag(name: "Small Heal", amount: 1, decript: "Heals 20 Health of any 1 pokemon per item");
+        public static Bag MedHeal = new Bag(name: "Med Heal", amount: 1, decript: "Heals 40 Health of any 1 pokemon per item");
+        public static Bag FullHeal = new Bag(name: "Full Heal", amount: 1, decript: "Heals ALL Health of any 1 pokemon per item");
+        public static Bag Revive = new Bag(name: "Reveive", amount: 1, decript: "Brings of 1 any pokemon back from knock out too at least half health");
 
         
         
@@ -48,7 +49,7 @@ namespace Program {
 
 
 
-
+            var UserBag = new Bag.PokemonBag();
             var party = new Pokemon.PokemonParty();
             
             Console.ForegroundColor = ConsoleColor.White;
@@ -60,7 +61,10 @@ namespace Program {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Your third choice is {MainClass.blubasaur.Name} (3)");
             Console.ForegroundColor = ConsoleColor.White;
-
+            UserBag.Add(SmllHeal);
+            SmllHeal.Amount = 4;
+            UserBag.Add(Revive);
+            Revive.Amount = 3;
             
             var Starter = Console.ReadKey(true).Key;
 
@@ -107,7 +111,15 @@ namespace Program {
                 
             }
 
-            Console.WriteLine("Would you like to go out and look for pokemon too battle and catch? (1)\nor chanllage the gym leader of the first gym? (2)");
+            Console.WriteLine("in your bag you have: ");
+            foreach (var item in UserBag) {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("hit any key to contine");
+            Thread.Sleep(150);
+            Console.ReadKey();
+
+            Console.WriteLine("now Would you like to go out and look for pokemon too battle and catch? (1)\nor chanllage the gym leader of the first gym? (2)");
             var Input = Console.ReadKey(true).Key;
 
             switch (Input) {
@@ -119,7 +131,7 @@ namespace Program {
                 case ConsoleKey.D2 or ConsoleKey.NumPad2:
                 Console.WriteLine("if you want to fight the first gym leader then you need more then 2 poekmon");
                 if (Pokemon.PokemonParty.internalList.Count > 2) {
-                    Console.WriteLine("you have more then 2 pokemon");
+                    Console.WriteLine("you have more then 2 pokemon so you can fight the first gym leader");
                     // GymLeader1();
                 }
                 else {
@@ -176,7 +188,12 @@ namespace Program {
                     switch (PMove) {
                         case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
                         Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
+                        if (Pokemon.PokemonParty.internalList.Count == 6) {
+                            Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
+                        }
                         Console.WriteLine(Pokemon.PokemonParty.internalList[0].Name);
+                        Console.WriteLine($"you have 3 moves for {Pokemon.PokemonParty.internalList[0]} move 1: {Pokemon.PokemonParty.internalList[0].Move1_Name}\nmove 1: does {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\nmove 2: {Pokemon.PokemonParty.internalList[0].Move2_Name} and move 2 does {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\nmove 3: {Pokemon.PokemonParty.internalList[0].Move3_Name} and move 3 does {Pokemon.PokemonParty.internalList[0].Move3_Attack} damage \n");
+
 
                         break;
 
@@ -209,31 +226,31 @@ namespace Program {
                     break;
                 }
 
-                Pokemon.PlayerMove();
+                //Pokemon.PlayerMove();
                 break;
 
                 case 2:
                 Console.WriteLine($"Your now Fighting {MainClass.Cterpie.Name} \n and it level {MainClass.Cterpie.Level}");
 
-                Pokemon.PlayerMove();
+                //Pokemon.PlayerMove();
                 break;
 
                 case 3:
                 Console.WriteLine($"Your now Fighting {MainClass.Houndour.Name} \n and it level {MainClass.Houndour.Level}");
 
-                Pokemon.PlayerMove();
+                //Pokemon.PlayerMove();
                 break;
 
                 case 4:
                 Console.WriteLine($"Your now Fighting {MainClass.Geodude.Name} \n and it level {MainClass.Geodude.Level}");
 
-                Pokemon.PlayerMove();
+                //Pokemon.PlayerMove();
                 break;
 
                 case 5:
                 Console.WriteLine($"Your now Fighting {MainClass.Torrcat.Name} \n and it level {MainClass.Torrcat.Level}");
 
-                Pokemon.PlayerMove();
+                //Pokemon.PlayerMove();
                 break;
             
             }
@@ -244,9 +261,6 @@ namespace Program {
     }
 
     class Pokemon {
-
-        
-
         public int Health { get; set; }
         public float Exp { get; set; }
         public int Level { get; set; }
@@ -305,14 +319,7 @@ namespace Program {
                 return "Party: " + Name + ": Health: " + Health + " Lvl: " + Level;
             }
 
-        public static void PlayerMove() {
-            
-            
-        }
-
-        public static void SystemMove() {
-            
-        }
+        
 
          
 
@@ -340,15 +347,14 @@ namespace Program {
                 internalList.Remove(pokemon);
             }
         }
-
-
     }
 
         public class Bag {
 
             public string Name { get; set;}
             public int Amount { get; set; }
-            public string Decript { get; set;}
+            public string Decript { get; set; }
+            public static int amount { get; set;} 
 
             public Bag(string name, int amount, string decript) {
                 this.Name = name;
@@ -356,13 +362,50 @@ namespace Program {
                 this.Decript = decript;
             }
 
-            
+            public static bool IsInBag(IReadOnlyList<Bag> bag, Bag Item) {
+                foreach(var partyMember in bag) {
+                    if (partyMember == Item)
+                    return true;
+                }
 
+                return false;
+            }
+
+            public override string ToString() {
+                return Name + ": " + "descritptoon " + Decript + ". Amount is : " + Amount + " each";
+            }
+
+        public class PokemonBag : IReadOnlyList<Bag>
+        {
+            private static List<Bag> pokebag = new List<Bag>();
+
+            public Bag this[int index] => throw new NotImplementedException();
+
+            Bag IReadOnlyList<Bag>.this[int index] => pokebag[index];
+
+            internal static List<Bag> Pokebag { get => pokebag; set => pokebag = value; }
+
+            public int Count => throw new NotImplementedException();
+
+            public IEnumerator<Bag> GetEnumerator()
+            {
+                return Pokebag.GetEnumerator();
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return Pokebag.GetEnumerator();
+            }
+            public void Add(Bag Item) {
+                Pokebag.Add(Item);
+            }
+
+            public void Remove(Bag Item) {
+                Pokebag.Remove(Item);
+            }
         }
-
-    
-        
-        
+    }       
+}   
         // TODO: Implement the IReadOnlyList interface to let other classes read from your internal list. VS can auto-do this for you. 
         // Why not implement IList directly? You may want to constrain the way pokemon are added to the party in a way that is not expected for a regular list interface. 
 
@@ -372,7 +415,7 @@ namespace Program {
         And is a way that you can reference the type of other classes.
         You could do it differently, since there's only up to 6 pokemon in a party.
         */
-}
+
 
 /* 
 
