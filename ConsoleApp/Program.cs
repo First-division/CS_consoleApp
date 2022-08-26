@@ -5,15 +5,15 @@ using System.Collections;
 namespace Program {
     public class MainClass {
         
-        static Pokemon Charmander = new Pokemon(exp: 0, level: 1, maxhealth: 39, 69, name: "Charmander", Idnumber: 004, move1_name: "Ember", move2_name: "Scratch", move3_name: "Rush", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Squirtle = new Pokemon(exp: 0, level: 1, maxhealth: 39, 69, name: "Squirtle", Idnumber: 007,move1_name: "Water gun", move2_name: "Rush", move3_name: "scratch", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon blubasaur = new Pokemon(exp: 0, level: 1, maxhealth: 39, 69, name: "Blubasaur", Idnumber: 001, move1_name: "Vine wip", move2_name: "Seed bomb", move3_name: "scratch", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Pigy = new Pokemon(exp: 0, level: 1, maxhealth: 39, 69, name: "Pigy", Idnumber: 000, move1_name: "Wind slash", move2_name: "Tackle", move3_name: "kick", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Eevee = new Pokemon(exp: 0, level: 1, maxhealth: 39, 69, name: "Eevee", Idnumber: 133, move1_name: "tackle", move2_name: "Tail Wip", move3_name: "Bite", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Cterpie = new Pokemon(exp: 0, level: 1, maxhealth: 39, 69, name: "Capterpie", Idnumber: 010, move1_name: "Bug Bite", move2_name: "String Shoot", move3_name: "Nap", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Geodude = new Pokemon(exp: 0, level: 1, maxhealth: 39, 69, name: "Geodude", Idnumber: 074, move1_name: "Rockc Punch", move2_name: "Light Punch", move3_name: "", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Houndour = new Pokemon(exp: 0, level: 1, maxhealth: 39, 69, name: "Houndour", Idnumber: 228, move1_name: "Dark Flare", move2_name: "Dark Bite", move3_name: "howel", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Torrcat = new Pokemon(exp: 0, level: 1, maxhealth: 39, 69, name: "Torrcat", Idnumber: 726, move1_name: "Fire Fang", move2_name: "Claw Slash", move3_name: "FlameThrower", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Charmander = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Charmander", Idnumber: 004, XpCase: 142, move1_name: "Ember", move2_name: "Scratch", move3_name: "Rush", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Squirtle = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Squirtle", Idnumber: 007, XpCase: 63, move1_name: "Water gun", move2_name: "Rush", move3_name: "scratch", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon blubasaur = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Blubasaur", Idnumber: 001, XpCase: 64, move1_name: "Vine wip", move2_name: "Seed bomb", move3_name: "scratch", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Pigy = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Pigy", Idnumber: 000, XpCase: 50, move1_name: "Wind slash", move2_name: "Tackle", move3_name: "kick", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Eevee = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Eevee", Idnumber: 133, XpCase: 65, move1_name: "tackle", move2_name: "Tail Wip", move3_name: "Bite", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Cterpie = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Capterpie", Idnumber: 010, XpCase: 39, move1_name: "Bug Bite", move2_name: "String Shoot", move3_name: "Nap", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Geodude = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Geodude", Idnumber: 074, XpCase: 60, move1_name: "Rockc Punch", move2_name: "Light Punch", move3_name: "", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Houndour = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Houndour", Idnumber: 228, XpCase: 66, move1_name: "Dark Flare", move2_name: "Dark Bite", move3_name: "howel", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Torrcat = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Torrcat", Idnumber: 726, XpCase: 147, move1_name: "Fire Fang", move2_name: "Claw Slash", move3_name: "FlameThrower", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
         
         
         public static Bag SmllHeal = new Bag(name: "Small Heal", amount: 1, decript: "Heals 20 Health of any 1 pokemon per item");
@@ -164,6 +164,8 @@ namespace Program {
         public static float FleeOrNotToFlee => Random.Shared.Next(0, 101);
         public static float CatchOrNotCatched => Random.Shared.Next(0, 101);
 
+        //internal static Pokemon Charmander1 { get => Charmander; set => Charmander = value; }
+
         public static void TallGrass() {
             var pokemonNumber = Pokemon.FindPokemon();
             bool Caught;
@@ -283,19 +285,21 @@ namespace Program {
     }
 
     class Pokemon {
-        public int MaxHealth { get; } = Random.Shared.Next(39, 69);
+        public int MaxHealth { get; set; } = Random.Shared.Next(39, 69);
         public int oHealth { get; }
+
+        
         public double Exp { get; set; }
         public int Level { get; }
         public string Name { get; set; }
-        public Pokemon(float exp, int level, int maxhealth, int Ohealth, string name, int Idnumber, string move1_name,string move2_name, string move3_name, int move1_attack, int move2_attack, int move3_attack)
-        {
+        public Pokemon(float exp, int level, int maxhealth, int Ohealth, string name, int Idnumber, int XpCase, string move1_name,string move2_name, string move3_name, int move1_attack, int move2_attack, int move3_attack) {
             this.MaxHealth = maxhealth;
             this.oHealth = Ohealth;
             this.Exp = exp;
             this.Level = level;
             this.Name = name;
             this.IDNumber = Idnumber;
+            this.EXpCase = XpCase;
 
             this.Move1_Name = move1_name;
             this.Move2_Name = move2_name;
@@ -305,8 +309,8 @@ namespace Program {
             this.Move2_Attack = move2_attack;
             this.Move3_Attack = move3_attack;
 
-            this.oHealth = MaxHealth;
-
+            oHealth = MaxHealth;
+            Ohealth = maxhealth;
             
         }
 
@@ -321,13 +325,13 @@ namespace Program {
         public int Move2_Attack { get; }
         public int Move3_Attack { get; }
         public int IDNumber { get; }
-
+        public int EXpCase { get; set; }
         public static bool PlayerAttack = false;
         public static bool PlayerBag = false;
         public static bool PlayerFlee = false;
 
         public static int FindPokemon() => Random.Shared.Next(1, 5);
-        //public static int RndHealth =  Random.Shared.Next(39, 69);
+        public static int RndHealth =  Random.Shared.Next(39, 69);
         public static int RndAttack() => Random.Shared.Next(13, 41);
 
        
@@ -347,24 +351,24 @@ namespace Program {
         }
 
         public double XPcal() {
+
             var A = 0;
-            var B = 0;
-            var E = 0;
-            var F = 0;
+            var B = Pokemon.PokemonParty.internalList[0].EXpCase;
+            var E = 1;
+            var F = (int)1.2;
             var L = 0;
-            var L2 = 0;
-            var S = 0;
+            var L2 = Pokemon.PokemonParty.internalList[0].Level;
+            var S = Pokemon.PokemonParty.internalList.Count;
             var P = 0;
-            var V = 0;
-            var T = 0;
+            var V = 1;
+            var T = (int)1.5;
             var XP = 0;
 
             var val0 = 0;
             var val1 = 0;
-            var val2 = 0;
 
 
-            val0 = b * L;
+            val0 = B * L;
             val1 = 7 * S;
 
             XP = val0 / val1 * E * A * T * P * F * V;
@@ -376,22 +380,16 @@ namespace Program {
                 A = (int)1.5;
             }
 
-            B = Pokemon.PokemonParty.internalList[0].EXpCase;
-
-            E = 1;
-
-            F = (int)1.2;
-
-            F = Pokemon.PokemonParty.internalList[0].Level;
-
             if(PlayerWon == true) {
                 P = Pokemon.PokemonParty.internalList[0].Level;
             }
 
             if (PlayerWon == false) {
-                P = Opp;
+                P = (int)1.2;
             }
 
+           
+            Console.WriteLine(Exp);
             return Exp;
         }
 
@@ -434,7 +432,7 @@ namespace Program {
             public int Amount { get; set; }
             public string Decript { get; set; }
             public static int amount { get; set;} 
-
+            
             public Bag(string name, int amount, string decript) {
                 this.Name = name;
                 this.Amount = amount;
