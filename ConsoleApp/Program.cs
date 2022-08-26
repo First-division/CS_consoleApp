@@ -5,34 +5,42 @@ using System.Collections;
 namespace Program {
     public class MainClass {
         
-        static Pokemon Charmander = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Charmander", Idnumber: 004, XpCase: 142, move1_name: "Ember", move2_name: "Scratch", move3_name: "Rush", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Squirtle = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Squirtle", Idnumber: 007, XpCase: 63, move1_name: "Water gun", move2_name: "Rush", move3_name: "scratch", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon blubasaur = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Blubasaur", Idnumber: 001, XpCase: 64, move1_name: "Vine wip", move2_name: "Seed bomb", move3_name: "scratch", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Pigy = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Pigy", Idnumber: 000, XpCase: 50, move1_name: "Wind slash", move2_name: "Tackle", move3_name: "kick", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Eevee = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Eevee", Idnumber: 133, XpCase: 65, move1_name: "tackle", move2_name: "Tail Wip", move3_name: "Bite", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Cterpie = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Capterpie", Idnumber: 010, XpCase: 39, move1_name: "Bug Bite", move2_name: "String Shoot", move3_name: "Nap", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Geodude = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Geodude", Idnumber: 074, XpCase: 60, move1_name: "Rockc Punch", move2_name: "Light Punch", move3_name: "", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Houndour = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Houndour", Idnumber: 228, XpCase: 66, move1_name: "Dark Flare", move2_name: "Dark Bite", move3_name: "howel", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Torrcat = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.RndHealth, Ohealth: Pokemon.RndHealth, name: "Torrcat", Idnumber: 726, XpCase: 147, move1_name: "Fire Fang", move2_name: "Claw Slash", move3_name: "FlameThrower", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        
-        
+        static Pokemon Charmander = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Charmander", Idnumber: 004, XpCase: 142, move1_name: "Ember", move2_name: "Scratch", move3_name: "Rush", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Squirtle = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Squirtle", Idnumber: 007, XpCase: 63, move1_name: "Water gun", move2_name: "Rush", move3_name: "scratch", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon blubasaur = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Blubasaur", Idnumber: 001, XpCase: 64, move1_name: "Vine wip", move2_name: "Seed bomb", move3_name: "scratch", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        // Starters ^ 
+        // Wilds
+        static Pokemon Pigy = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Pigy", Idnumber: 000, XpCase: 50, move1_name: "Wind slash", move2_name: "Tackle", move3_name: "kick", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Eevee = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Eevee", Idnumber: 133, XpCase: 65, move1_name: "tackle", move2_name: "Tail Wip", move3_name: "Bite", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Cterpie = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Capterpie", Idnumber: 010, XpCase: 39, move1_name: "Bug Bite", move2_name: "String Shoot", move3_name: "Nap", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Geodude = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Geodude", Idnumber: 074, XpCase: 60, move1_name: "Rockc Punch", move2_name: "Light Punch", move3_name: "", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Houndour = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Houndour", Idnumber: 228, XpCase: 66, move1_name: "Dark Flare", move2_name: "Dark Bite", move3_name: "howel", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Torrcat = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Torrcat", Idnumber: 726, XpCase: 147, move1_name: "Fire Fang", move2_name: "Claw Slash", move3_name: "FlameThrower", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        // Wilds ^
+        // Bag
         public static Bag SmllHeal = new Bag(name: "Small Heal", amount: 1, decript: "Heals 20 Health of any 1 pokemon per item");
         public static Bag MedHeal = new Bag(name: "Med Heal", amount: 1, decript: "Heals 40 Health of any 1 pokemon per item");
         public static Bag FullHeal = new Bag(name: "Full Heal", amount: 1, decript: "Heals ALL Health of any 1 pokemon per item");
         public static Bag Revive = new Bag(name: "Reveive", amount: 1, decript: "Brings of 1 any pokemon back from knock out too at least half health");
 
         //static int o = Pokemon.RndHealth;
-        
-        
+
+        private static Pokemon.PokemonParty party = new Pokemon.PokemonParty();
+
         public static void Main() {
             
             //var pokemons = Enumerable.Repeat<Func<Pokemon>>(() => new Pokemon()
-            Console.WriteLine();
-            Console.WriteLine(Charmander);            
-            Console.WriteLine(Squirtle);
-            Console.WriteLine(Torrcat);
-            Console.WriteLine(blubasaur);
-            Console.WriteLine(Cterpie);
+            // Console.WriteLine();
+            // Console.WriteLine(Charmander);            
+            // Console.WriteLine(Squirtle);
+            // Console.WriteLine(blubasaur);
+            // Console.WriteLine();
+            // Console.WriteLine(Torrcat);
+            // Console.WriteLine(Cterpie);
+            // Console.WriteLine(Eevee);
+            // Console.WriteLine(Pigy);
+            // Console.WriteLine(Geodude);
+            // Console.WriteLine(Houndour);
             
             
             //var isInParty = Pokemon.IsPokemonInParty(party, Charmander);     // TRUE
@@ -51,7 +59,7 @@ namespace Program {
 
 
 
-
+        
 
             var UserBag = new Bag.PokemonBag();
             var party = new Pokemon.PokemonParty();
@@ -69,6 +77,7 @@ namespace Program {
             SmllHeal.Amount = 4;
             UserBag.Add(Revive);
             Revive.Amount = 3;
+            //Console.WriteLine($"you now have {Bag.PokemonBag.Pokebag[0].Amount} of {Bag.PokemonBag.Pokebag[0].Name}");
             
             var Starter = Console.ReadKey(true).Key;
 
@@ -121,14 +130,14 @@ namespace Program {
             }
             Console.WriteLine("hit any key to contine");
             Thread.Sleep(150);
-            Console.ReadKey();
+            Console.ReadKey(true);
 
-            Console.WriteLine("now Would you like to go out and look for pokemon too battle and catch? (1)\nor chanllage the gym leader of the first gym? (2)");
-            var Input = Console.ReadKey(true).Key;
+            Console.WriteLine("Now Would you like to go out and look for pokemon too battle and catch? (1)\nor chanllage the gym leader of the first gym? (2)");
+            var Game = Console.ReadKey(true).Key;
 
-            switch (Input) {
+            switch (Game) {
                 case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                Console.WriteLine("your now going to into the tall grass too look for pokemon to catch");
+                Console.WriteLine("your now going into some tall grass too look for pokemon to catch");
                 TallGrass();
                 break;
 
@@ -136,10 +145,11 @@ namespace Program {
                 Console.WriteLine("if you want to fight the first gym leader then you need more then 2 poekmon");
                 if (Pokemon.PokemonParty.internalList.Count > 2) {
                     Console.WriteLine("you have more then 2 pokemon so you can fight the first gym leader");
-                    // GymLeader1();
+                    GymLeader1();
                 }
                 else {
                     Console.WriteLine("come back when you have more then 2 pokemon so you cam fight the gym leader");
+                    TallGrass();
                 }
                 break;
                 
@@ -149,10 +159,10 @@ namespace Program {
          
         }
 
-        // public static ConsoleKey grass = Console.ReadKey(true).Key;
 
+
+        // FOR REFRENCE TOO USE WHEN MAKING THE SHOP. make a stock witch limited too x amount where x is a random num from 4 - 8
         
-
         //public static Dictionary<string, (int lvl, int Exp)> PlayerPokadex = new Dictionary<string, (int lvl, int Exp)>{};
 
         //public static Dictionary<string, MainClass.blubasaur()> CurrentParty = new Dictionary (string, MainClass.blubasaur());
@@ -164,15 +174,20 @@ namespace Program {
         public static float FleeOrNotToFlee => Random.Shared.Next(0, 101);
         public static float CatchOrNotCatched => Random.Shared.Next(0, 101);
 
+        public static int SystemMove => Random.Shared.Next(1, 6);
+
+
+        //internal static Pokemon.PokemonParty Party { get => party; set => party = value; }
+
         //internal static Pokemon Charmander1 { get => Charmander; set => Charmander = value; }
 
         public static void TallGrass() {
             var pokemonNumber = Pokemon.FindPokemon();
             bool Caught;
-
+            Pokemon.IsWild = true;
             switch (pokemonNumber) {
                 case 1:
-                Console.WriteLine($"Your now Fighting {MainClass.Pigy.Name} \n and it level {MainClass.Pigy.Level}");
+                Console.WriteLine($"Your now Fighting {MainClass.Pigy.Name}\nand it's level is: {MainClass.Pigy.Level}");
 
                 while (Caught = true || MainClass.Pigy.oHealth <= 0 || Pokemon.PokemonParty.internalList[0].oHealth <= 0 || Pokemon.PokemonParty.internalList[1].oHealth <= 0 || Pokemon.PokemonParty.internalList[2].oHealth <= 0) {
                     Console.ForegroundColor = ConsoleColor.White;
@@ -188,24 +203,51 @@ namespace Program {
                     Console.ForegroundColor = ConsoleColor.White;
 
                     var PMove = Console.ReadKey(true).Key;
-
+                    int PP = 2;
                     //fractem 
 
                     switch (PMove) {
                         case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
-                        Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
-                        if (Pokemon.PokemonParty.internalList.Count == 6) {
-                            Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
-                        }
+                        
                         Console.WriteLine(Pokemon.PokemonParty.internalList[0].Name);
                         Console.WriteLine($"you have 3 moves for {Pokemon.PokemonParty.internalList[0]} move 1: {Pokemon.PokemonParty.internalList[0].Move1_Name}\nmove 1: does {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\nmove 2: {Pokemon.PokemonParty.internalList[0].Move2_Name} and move 2 does {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\nmove 3: {Pokemon.PokemonParty.internalList[0].Move3_Name} and move 3 does {Pokemon.PokemonParty.internalList[0].Move3_Attack} damage \n");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("as a note you can only use each move 2 or 3 times so use them wisly \nso witch move would you like to use? (1) (2) (3)");
+                        
+                        var Attack = Console.ReadKey(true).Key;
 
+                        switch (Attack) {
+                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                            Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move1_Attack;
+                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move1_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
+                            break;
+                        }
 
+                        Console.WriteLine($"Now its {Pigy.Name}'s turn");
+                        switch (SystemMove) {
+                            case 1:
+                            //move 1
+                            break;
+
+                            case 2:
+                            // move 2
+                            break;
+                            
+                            case 3:
+                            // move 3
+                            break;
+
+                            case 4:
+                            // do nothing
+                            break;
+                        }
+
+                        Pokemon.XPcal();
                         break;
 
-                        case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                        case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
                         
-                        // make a new class full of itams and healing props with a list called "Bag"
+                        
                         Console.WriteLine($"what do you want to do in your bag? you have ");
                         foreach (var item in Bag.PokemonBag.Pokebag) {
                             Console.WriteLine(item);
@@ -220,7 +262,17 @@ namespace Program {
                                 Thread.Sleep(250);
                             }
                             if (Pokemon.PokemonParty.internalList[0].oHealth > Pokemon.PokemonParty.internalList[0].MaxHealth){
-                                // you can heal your first pokemon
+                                Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[1]} or (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
+                                var Heal = Console.ReadKey(true).Key;
+                                switch (Heal)
+                                {
+                                    case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                                    Console.WriteLine("");
+                                    Pokemon.PokemonParty.internalList[0].oHealth += 20;
+                                    Bag.PokemonBag.Pokebag[0].Amount --;
+                                    Console.WriteLine($"you now have {Bag.PokemonBag.Pokebag[0].Amount}");
+                                    break;
+                                }
                             }
                             break;
                             
@@ -228,8 +280,22 @@ namespace Program {
                         break;
 
                         case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
-                        if(CatchOrNotCatched <= 50f){
-                            Console.WriteLine($"You Catched the {MainClass.Pigy.Name}!!");  
+                        Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
+                        if (Pokemon.PokemonParty.internalList.Count == 6 && CatchOrNotCatched <= 50f) {
+                            Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
+                        }
+                        if (Pokemon.PokemonParty.internalList.Count < 6 && CatchOrNotCatched >= 50f) {
+                            Console.WriteLine($"You Catched the {MainClass.Pigy.Name}!! {MainClass.Pigy.Name} is now in your party");
+                            party.Add(Pigy);
+                            foreach (var item in Pokemon.PokemonParty.internalList)
+                            {
+                                Console.WriteLine(item);
+                                Thread.Sleep(250);
+                            }
+                            Pokemon.XPcal();
+                            
+                            Console.WriteLine("Would you like to go back into some tall grass and look for pokmon to battle?");
+
                         }
                         break;
 
@@ -247,6 +313,7 @@ namespace Program {
                 
                 
                     }
+                    Pokemon.IsWild = false;
                     break;
                 }
 
@@ -281,14 +348,18 @@ namespace Program {
             
 
         }
-        
+        public static void GymLeader1() {
+
+        } 
     }
+
+
+    
 
     class Pokemon {
         public int MaxHealth { get; set; } = Random.Shared.Next(39, 69);
-        public int oHealth { get; }
+        public int oHealth { get; set; }
 
-        
         public double Exp { get; set; }
         public int Level { get; }
         public string Name { get; set; }
@@ -330,7 +401,8 @@ namespace Program {
         public static bool PlayerBag = false;
         public static bool PlayerFlee = false;
 
-        public static int FindPokemon() => Random.Shared.Next(1, 5);
+        public static int FindPokemon() => Random.Shared.Next(1, 1);
+        public static int WildPoekmonHealth() => Random.Shared.Next(39, 69);
         public static int RndHealth =  Random.Shared.Next(39, 69);
         public static int RndAttack() => Random.Shared.Next(13, 41);
 
@@ -350,7 +422,7 @@ namespace Program {
             return "Party: " + Name + ": Health: " + MaxHealth + " / " + oHealth + " Lvl: " + Level;
         }
 
-        public double XPcal() {
+        public static void XPcal() {
 
             var A = 0;
             var B = Pokemon.PokemonParty.internalList[0].EXpCase;
@@ -387,10 +459,13 @@ namespace Program {
             if (PlayerWon == false) {
                 P = (int)1.2;
             }
-
+ 
            
-            Console.WriteLine(Exp);
-            return Exp;
+            Console.WriteLine(XP);
+
+            Pokemon.PokemonParty.internalList[0].Exp += XP;
+            Pokemon.PokemonParty.internalList[1].Exp += XP;
+            Pokemon.PokemonParty.internalList[2].Exp += XP;
         }
 
         public static bool IsWild;
