@@ -242,7 +242,7 @@ namespace Program {
                             break;
                         }
 
-                        Pokemon.XPcal();
+                        Pokemon.XpLvlCal();
                         break;
 
                         case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
@@ -292,7 +292,7 @@ namespace Program {
                                 Console.WriteLine(item);
                                 Thread.Sleep(250);
                             }
-                            Pokemon.XPcal();
+                            Pokemon.XpLvlCal();
                             
                             Console.WriteLine("Would you like to go back into some tall grass and look for pokmon to battle?");
 
@@ -361,7 +361,7 @@ namespace Program {
         public int oHealth { get; set; }
 
         public double Exp { get; set; }
-        public int Level { get; }
+        public int Level { get; set; }
         public string Name { get; set; }
         public Pokemon(float exp, int level, int maxhealth, int Ohealth, string name, int Idnumber, int XpCase, string move1_name,string move2_name, string move3_name, int move1_attack, int move2_attack, int move3_attack) {
             this.MaxHealth = maxhealth;
@@ -422,7 +422,7 @@ namespace Program {
             return "Party: " + Name + ": Health: " + MaxHealth + " / " + oHealth + " Lvl: " + Level;
         }
 
-        public static void XPcal() {
+        public static void XpLvlCal() {
 
             var A = 0;
             var B = Pokemon.PokemonParty.internalList[0].EXpCase;
@@ -461,11 +461,30 @@ namespace Program {
             }
  
            
-            Console.WriteLine(XP);
+            Console.WriteLine($"All of your non fainted pokemon got {XP}");
 
             Pokemon.PokemonParty.internalList[0].Exp += XP;
             Pokemon.PokemonParty.internalList[1].Exp += XP;
             Pokemon.PokemonParty.internalList[2].Exp += XP;
+
+            // Xp Cal ^
+            // Lvl Cal
+
+            Pokemon.PokemonParty.internalList[0].Exp = XP;
+            var Xp = 0;
+            
+            if (Pokemon.PokemonParty.internalList[0].Exp > 0) {
+                switch (Xp) {
+                    case 10 or <= 10: // 2
+                    Pokemon.PokemonParty.internalList[0].Level ++;
+                    break;
+
+                    case 27 or <= 27:
+                    Pokemon.PokemonParty.internalList[0].Level ++;
+                    break;
+                }
+            }   
+            
         }
 
         public static bool IsWild;
