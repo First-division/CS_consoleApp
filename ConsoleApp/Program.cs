@@ -463,26 +463,45 @@ namespace Program {
            
             Console.WriteLine($"All of your non fainted pokemon got {XP}");
 
-            Pokemon.PokemonParty.internalList[0].Exp += XP;
-            Pokemon.PokemonParty.internalList[1].Exp += XP;
-            Pokemon.PokemonParty.internalList[2].Exp += XP;
+            if (Pokemon.PokemonParty.internalList[0].oHealth > 0 && Pokemon.PokemonParty.internalList[1].oHealth > 0 && Pokemon.PokemonParty.internalList[2].oHealth > 0 && Pokemon.PokemonParty.internalList[3].oHealth > 0) {
+                
+                Pokemon.PokemonParty.internalList[0].Exp += XP;
+                Pokemon.PokemonParty.internalList[1].Exp += XP;
+                Pokemon.PokemonParty.internalList[2].Exp += XP;
+            }
+            
 
             // Xp Cal ^
             // Lvl Cal
 
             Pokemon.PokemonParty.internalList[0].Exp = XP;
             var Xp = 0;
+
+            int Min1 = 5;
+            int Max1 = 10;
+            
+            
+            if (PokemonParty.internalList[0].Level )
+            {
+                
+            }
+            
+            
             
             if (Pokemon.PokemonParty.internalList[0].Exp > 0) {
-                switch (Xp) {
-                    case 10 or <= 10: // 2
-                    Pokemon.PokemonParty.internalList[0].Level ++;
-                    break;
+                
+                
+                
+                
+                // switch (Xp) {
+                //     case 10 or <= 10: // 2
+                //     Pokemon.PokemonParty.internalList[0].Level ++;
+                //     break;
 
-                    case 27 or <= 27:
-                    Pokemon.PokemonParty.internalList[0].Level ++;
-                    break;
-                }
+                //     case 27 or <= 27:
+                //     Pokemon.PokemonParty.internalList[0].Level ++;
+                //     break;
+                // }
             }   
             
         }
