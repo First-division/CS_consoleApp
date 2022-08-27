@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 namespace Program {
     public class MainClass {
@@ -183,13 +184,13 @@ namespace Program {
 
         public static void TallGrass() {
             var pokemonNumber = Pokemon.FindPokemon();
-            bool Caught;
+            bool Caught = false;
             Pokemon.IsWild = true;
             switch (pokemonNumber) {
                 case 1:
                 Console.WriteLine($"Your now Fighting {MainClass.Pigy.Name}\nand it's level is: {MainClass.Pigy.Level}");
 
-                while (Caught = true || MainClass.Pigy.oHealth <= 0 || Pokemon.PokemonParty.internalList[0].oHealth <= 0 || Pokemon.PokemonParty.internalList[1].oHealth <= 0 || Pokemon.PokemonParty.internalList[2].oHealth <= 0) {
+                while (Caught = true || MainClass.Pigy.oHealth <= 0) {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Would you like too.... press the number to sleact your option \n");
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -203,8 +204,8 @@ namespace Program {
                     Console.ForegroundColor = ConsoleColor.White;
 
                     var PMove = Console.ReadKey(true).Key;
-                    int PP = 2;
-                    //fractem 
+                    // int PP = 2;
+                    // fractem 
 
                     switch (PMove) {
                         case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
@@ -221,28 +222,53 @@ namespace Program {
                             Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move1_Attack;
                             Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move1_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
                             break;
+
+                            case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                            Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move2_Attack;
+                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move2_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
+                            break;
+
+                            case ConsoleKey.D3 or ConsoleKey.NumPad3:
+                            Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move3_Attack;
+                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move3_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
+                            break;
+                        }
+
+                        if (Pigy.oHealth <= 0 || Caught == true) {
+                            break;
                         }
 
                         Console.WriteLine($"Now its {Pigy.Name}'s turn");
                         switch (SystemMove) {
                             case 1:
-                            //move 1
+                            Console.WriteLine($"Pigy uses {Pigy.Move1_Name} and it does {Pigy.Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
+                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
+                            Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move1_Attack;
+                            
                             break;
 
                             case 2:
-                            // move 2
+                            Console.WriteLine($"Pigy uses {Pigy.Move1_Name} and it does {Pigy.Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
+                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
+                            Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move1_Attack;
                             break;
                             
                             case 3:
-                            // move 3
+                            Console.WriteLine($"Pigy uses {Pigy.Move1_Name} and it does {Pigy.Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
+                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
+                            Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move1_Attack;
+                            
                             break;
 
                             case 4:
-                            // do nothing
+                            Console.WriteLine($"Pigy uses {Pigy.Move1_Name} and it does {Pigy.Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
+                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
+                            Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move1_Attack;
+                            
                             break;
                         }
 
-                        Pokemon.XpLvlCal();
+                        
                         break;
 
                         case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
@@ -262,7 +288,7 @@ namespace Program {
                                 Thread.Sleep(250);
                             }
                             if (Pokemon.PokemonParty.internalList[0].oHealth > Pokemon.PokemonParty.internalList[0].MaxHealth){
-                                Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[1]} or (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
+                                Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[0]} or (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
                                 var Heal = Console.ReadKey(true).Key;
                                 switch (Heal)
                                 {
@@ -283,10 +309,12 @@ namespace Program {
                         Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
                         if (Pokemon.PokemonParty.internalList.Count == 6 && CatchOrNotCatched <= 50f) {
                             Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
+                            Caught = false;
                         }
                         if (Pokemon.PokemonParty.internalList.Count < 6 && CatchOrNotCatched >= 50f) {
                             Console.WriteLine($"You Catched the {MainClass.Pigy.Name}!! {MainClass.Pigy.Name} is now in your party");
                             party.Add(Pigy);
+                            Caught = true;
                             foreach (var item in Pokemon.PokemonParty.internalList)
                             {
                                 Console.WriteLine(item);
@@ -382,6 +410,8 @@ namespace Program {
 
             oHealth = MaxHealth;
             Ohealth = maxhealth;
+
+            PokemonParty.internalList.Capacity = 6;
             
         }
 
@@ -392,7 +422,7 @@ namespace Program {
         public string Move2_Name { get; }
         public string Move3_Name { get; }
         ////////////////////////////////////////
-        public int Move1_Attack { get; }
+        public int Move1_Attack { get; set; }
         public int Move2_Attack { get; }
         public int Move3_Attack { get; }
         public int IDNumber { get; }
@@ -401,7 +431,7 @@ namespace Program {
         public static bool PlayerBag = false;
         public static bool PlayerFlee = false;
 
-        public static int FindPokemon() => Random.Shared.Next(1, 1);
+        public static int FindPokemon() => Random.Shared.Next(1, 5);
         public static int WildPoekmonHealth() => Random.Shared.Next(39, 69);
         public static int RndHealth =  Random.Shared.Next(39, 69);
         public static int RndAttack() => Random.Shared.Next(13, 41);
@@ -465,26 +495,80 @@ namespace Program {
 
             if (Pokemon.PokemonParty.internalList[0].oHealth > 0 && Pokemon.PokemonParty.internalList[1].oHealth > 0 && Pokemon.PokemonParty.internalList[2].oHealth > 0 && Pokemon.PokemonParty.internalList[3].oHealth > 0) {
                 
-                Pokemon.PokemonParty.internalList[0].Exp += XP;
+                
                 Pokemon.PokemonParty.internalList[1].Exp += XP;
                 Pokemon.PokemonParty.internalList[2].Exp += XP;
+
             }
+
+            if (Pokemon.PokemonParty.internalList.Count == 1 && Pokemon.PokemonParty.internalList[0].oHealth > 0 ) {
+                Pokemon.PokemonParty.internalList[0].Exp += XP;
+            }
+            if (Pokemon.PokemonParty.internalList.Count == 1 && Pokemon.PokemonParty.internalList[1].oHealth > 0 ) {
+                Pokemon.PokemonParty.internalList[1].Exp += XP;
+            }
+            if (Pokemon.PokemonParty.internalList.Count == 1 && Pokemon.PokemonParty.internalList[2].oHealth > 0 ) {
+                Pokemon.PokemonParty.internalList[2].Exp += XP;
+            }
+
+
+            if (Pokemon.PokemonParty.internalList.Count == 2 && Pokemon.PokemonParty.internalList[0].oHealth > 0 ) {
+                Pokemon.PokemonParty.internalList[3].Exp += XP;
+            }
+            
+            if ()
+            {
+                
+            }
+
+        
+
             
 
             // Xp Cal ^
             // Lvl Cal
 
             Pokemon.PokemonParty.internalList[0].Exp = XP;
-            var Xp = 0;
+            double Xp = 0;
 
-            int Min1 = 5;
-            int Max1 = 10;
+            double Min1 = 5;
+            double Max1 = 10;
             
             
-            if (PokemonParty.internalList[0].Level )
-            {
-                
+            if (PokemonParty.internalList[0].Exp > Min1 && PokemonParty.internalList[0].Exp < Max1) {
+                PokemonParty.internalList[0].Level ++;
+                Min1 *= 2.1 - 3;
+                Max1 *= 2.6;
             }
+            if (PokemonParty.internalList[1].Exp > Min1 && PokemonParty.internalList[1].Exp < Max1) {
+                PokemonParty.internalList[1].Level ++;
+                Min1 *= 2.1 - 6;
+                Max1 *= 2.6;
+
+            }
+            if (PokemonParty.internalList[2].Exp > Min1 && PokemonParty.internalList[2].Exp < Max1) {
+                PokemonParty.internalList[2].Level ++;
+                Min1 *= 2.1 - 8;
+                Max1 *= 2.6;
+            }
+            if (PokemonParty.internalList[3].Exp > Min1 && PokemonParty.internalList[3].Exp < Max1) {
+                PokemonParty.internalList[3].Level ++;
+                Min1 *= 2.1 - 10;
+                Max1 *= 2.6;
+            }
+
+            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0].Name} is now {Pokemon.PokemonParty.internalList[0].Level}");
+            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[1].Name} is now {Pokemon.PokemonParty.internalList[1].Level}");
+            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[2].Name} is now {Pokemon.PokemonParty.internalList[2].Level}");
+
+            
+            /*
+
+            >	Greater than	x > y	
+            <	Less than	    x < y
+            
+            */
+
             
             
             
