@@ -325,8 +325,10 @@ namespace Program {
                     Thread.Sleep(250);
                 }
                 Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("would you like to use a item on your pokemon too heal them? (1) or do nothing (2)");
-                Console.WriteLine("")
+                Console.WriteLine("would you like to use a item on your pokemon too heal them? (1)");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("or do nothing (2)");
+                Console.ForegroundColor = ConsoleColor.White;
                 var PlayerBag = Console.ReadKey(true).Key;
                 Console.ForegroundColor = ConsoleColor.White;
                 switch (PlayerBag) {
@@ -336,7 +338,16 @@ namespace Program {
                         Thread.Sleep(250);
                     }
                     if (Pokemon.PokemonParty.internalList[0].oHealth > Pokemon.PokemonParty.internalList[0].MaxHealth){
-                        Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[0]} or (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
+                        Console.WriteLine("Work in progress");
+                        // Console.ForegroundColor = ConsoleColor.Green;
+                        // Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[0]} (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
+                        // Console.ForegroundColor = ConsoleColor.Red;
+                        // Console.WriteLine($"")
+                        // Console.ForegroundColor = ConsoleColor.Red;
+                        // Console.WriteLine($"");
+                        // Console.ForegroundColor = ConsoleColor.Red;
+                        // Console.WriteLine($"");
+                        // Console.ForegroundColor = ConsoleColor.White;
                         var Heal = Console.ReadKey(true).Key;
                         switch (Heal)
                         {
@@ -354,7 +365,7 @@ namespace Program {
                     break;
                     
                 }
-                PokemonMove();
+                //PokemonMove();
                 break; // end of BAG case.
 
                 case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
@@ -374,7 +385,13 @@ namespace Program {
                     }
                     Pokemon.XpLvlCal();
                     
-                    Console.WriteLine("Would you like to go back into some tall grass (1) and look for pokemon to battle or go challeng the first gym leader (2) end the program (3)");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Would you like to go back into some tall grass and look for pokemon to battle (1)");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("or go challeng the first gym leader (2)");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("end the program (3)");
+                    Console.ForegroundColor = ConsoleColor.White;
 
                     var Faild = Console.ReadKey(true).Key;
                     switch (Faild) {
@@ -382,9 +399,11 @@ namespace Program {
                         Console.WriteLine("your now going BACK into some tall grass to look for pokmon to battle");
                         TallGrass();
                         break;
+
                         case ConsoleKey.D2 or ConsoleKey.NumPad2:
                         GymLeader1();
                         break;
+                        
                         case ConsoleKey.D3 or ConsoleKey.NumPad3:
                         Console.Clear();
                         Environment.Exit(1);
@@ -647,16 +666,7 @@ namespace Program {
                 
                 
                 
-            //     // switch (Xp) {
-            //     //     case 10 or <= 10: // 2
-            //     //     Pokemon.PokemonParty.internalList[0].Level ++;
-            //     //     break;
-
-            //     //     case 27 or <= 27:
-            //     //     Pokemon.PokemonParty.internalList[0].Level ++;
-            //     //     break;
-            //     // }
-            // }   
+           
 
 
             Console.ForegroundColor = ConsoleColor.White;
