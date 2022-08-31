@@ -56,9 +56,6 @@ namespace Program {
 
             //Console.WriteLine(isInParty);
             //Console.WriteLine(party);
-            
-
-
 
         
 
@@ -90,7 +87,7 @@ namespace Program {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"Your {Charmander.Name} is level {Charmander.Level} and has {Charmander.Exp} Exp.\nThis pokemon also has 3 moves. {Charmander.Move1_Name} and it does {Charmander.Move1_Attack} damage \n{Charmander.Move2_Name} and it does {Charmander.Move2_Attack} damge \n{Charmander.Move3_Name} and it does {Charmander.Move3_Attack} damage");
                 foreach (var item in Pokemon.PokemonParty.internalList) {
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(item);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
@@ -131,14 +128,21 @@ namespace Program {
             }
             Console.WriteLine("hit any key to contine");
             Thread.Sleep(150);
+            Pokemon.XpLvlCal();
             Console.ReadKey(true);
-
-            Console.WriteLine("Now Would you like to go out and look for pokemon too battle and catch? (1)\nor chanllage the gym leader of the first gym? (2)");
+            
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Now Would you like to go out and look for pokemon too battle and catch? (1)");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Or chanllage the gym leader of the first gym? (2)");
+            Console.ForegroundColor = ConsoleColor.White;
             var Game = Console.ReadKey(true).Key;
 
             switch (Game) {
                 case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("your now going into some tall grass too look for pokemon to catch");
+                Console.ForegroundColor = ConsoleColor.White;
                 TallGrass();
                 break;
 
@@ -174,7 +178,6 @@ namespace Program {
 
         public static float FleeOrNotToFlee => Random.Shared.Next(0, 101);
         public static float CatchOrNotCatched => Random.Shared.Next(0, 101);
-
         public static int SystemMove => Random.Shared.Next(1, 6);
 
 
@@ -183,905 +186,269 @@ namespace Program {
         //internal static Pokemon Charmander1 { get => Charmander; set => Charmander = value; }
 
         public static void TallGrass() {
-            var pokemonNumber = Pokemon.FindPokemon();
-            bool Caught = false;
+            var pokemonNumber = Pokemon.FindPokemon;
             Pokemon.IsWild = true;
             switch (pokemonNumber) {
                 case 1:
-                Console.WriteLine($"Your now Fighting {MainClass.Pigy.Name}\nand it has {MainClass.Cterpie.oHealth} health it's level is: {MainClass.Pigy.Level}");
-
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Would you like too.... press the number to sleact your option \n");
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("fight? (1) \n");
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("open your Bag? (2) \n");
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine($"Catch the {MainClass.Pigy.Name}? (3) \n");
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Flee? (4) \n");
+                Console.WriteLine($"Your now Fighting {MainClass.Pigy.Name}\nand it has {MainClass.Cterpie.oHealth} health it's level is: {MainClass.Pigy.Level}");
                 Console.ForegroundColor = ConsoleColor.White;
-
-                var PMove = Console.ReadKey(true).Key;
+                PlayerMove();
                 // int PP = 2;
                 // fractem 
 
-                switch (PMove) {
-                    case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
-                    
-                    Console.WriteLine(Pokemon.PokemonParty.internalList[0].Name);
-                    Console.WriteLine($"you have 3 moves for {Pokemon.PokemonParty.internalList[0]} move 1: {Pokemon.PokemonParty.internalList[0].Move1_Name}\nmove 1: does {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\nmove 2: {Pokemon.PokemonParty.internalList[0].Move2_Name} and move 2 does {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\nmove 3: {Pokemon.PokemonParty.internalList[0].Move3_Name} and move 3 does {Pokemon.PokemonParty.internalList[0].Move3_Attack} damage \n");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("as a note you can only use each move 2 or 3 times so use them wisly \nso witch move would you like to use? (1) (2) (3)");
-                    
-                    var Attack = Console.ReadKey(true).Key;
-
-                    switch (Attack) {
-                        case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                        Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move1_Attack;
-                        Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move1_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                        break;
-
-                        case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                        Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move2_Attack;
-                        Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move2_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                        
-                        
-                        break; // braking out of attacking
-
-                        case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                        Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move3_Attack;
-                        Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move3_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                        break;
-                    }
-
-                    if (Pigy.oHealth <= 0 || Caught == true) {
-                        break;
-                    }
-
-                    
-
-                    
-                    break; // for end of fighting
-
-                    case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
-                    
-                    
-                    Console.WriteLine($"what do you want to do in your bag? you have ");
-                    foreach (var item in Bag.PokemonBag.Pokebag) {
-                        Console.WriteLine(item);
-                        Thread.Sleep(250);
-                    }
-                    Console.WriteLine("would you like to use a item on your pokemon too heal them? (1) or do nothing (2)");
-                    var PlayerBag = Console.ReadKey(true).Key;
-                    switch (PlayerBag) {
-                        case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                        foreach (var item in Pokemon.PokemonParty.internalList) {
-                            Console.WriteLine(item);
-                            Thread.Sleep(250);
-                        }
-                        if (Pokemon.PokemonParty.internalList[0].oHealth > Pokemon.PokemonParty.internalList[0].MaxHealth){
-                            Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[0]} or (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
-                            var Heal = Console.ReadKey(true).Key;
-                            switch (Heal)
-                            {
-                                case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                                Console.WriteLine("");
-                                Pokemon.PokemonParty.internalList[0].oHealth += 20;
-                                Bag.PokemonBag.Pokebag[0].Amount --;
-                                Console.WriteLine($"you now have {Bag.PokemonBag.Pokebag[0].Amount}");
-                                break;
-                            }
-                        }
-                        break;
-                        
-                    }
-                    break;
-
-                    case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
-                    Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
-                    if (Pokemon.PokemonParty.internalList.Count == 6 && CatchOrNotCatched <= 50f) {
-                        Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
-                        Caught = false;
-                    }
-                    if (Pokemon.PokemonParty.internalList.Count < 6 && CatchOrNotCatched >= 50f) {
-                        Console.WriteLine($"You Catched the {MainClass.Pigy.Name}!! {MainClass.Pigy.Name} is now in your party");
-                        party.Add(Pigy);
-                        Caught = true;
-                        foreach (var item in Pokemon.PokemonParty.internalList)
-                        {
-                            Console.WriteLine(item);
-                            Thread.Sleep(250);
-                        }
-                        Pokemon.XpLvlCal();
-                        
-                        Console.WriteLine("Would you like to go back into some tall grass (1) and look for pokemon to battle or go challeng the first gym leader (2) end the program (3)");
-
-                        var Faild = Console.ReadKey(true).Key;
-                        switch (Faild) {
-                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                            Console.WriteLine("your now going BACK into some tall grass to look for pokmon to battle");
-                            TallGrass();
-                            break;
-                            case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                            GymLeader1();
-                            break;
-                            case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                            Console.Clear();
-                            Environment.Exit(1);
-                            break;                           
-                        }
-
-                    }
-                    break;
-
-                    case ConsoleKey.D4 or ConsoleKey.NumPad4: // flee
-                    if (FleeOrNotToFlee < 50f) {
-                        Console.WriteLine("you got away!");
-                        Console.WriteLine(FleeOrNotToFlee);
-                    }
-                    else if (FleeOrNotToFlee > 50f) {
-                        Console.WriteLine("you didin't get away");
-                        Console.WriteLine(FleeOrNotToFlee);
-                    }
-                    break;
-            
-            
-                }
+                
                 Pokemon.IsWild = false;
                 
-                Console.WriteLine($"Now its {Pigy.Name}'s turn");
-                switch (SystemMove) {
-                    case 1: // move 1
-                    Console.WriteLine($"Pigy uses {Pigy.Move1_Name} and it does {Pigy.Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                    Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move1_Attack;
-                    Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                    break;
-
-                    case 2: // move 2 
-                    Console.WriteLine($"Pigy uses {Pigy.Move2_Name} and it does {Pigy.Move2_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                    Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move2_Attack;
-                    Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                    break;
-                    
-                    case 3: // move 3
-                    Console.WriteLine($"Pigy uses {Pigy.Move3_Name} and it does {Pigy.Move3_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                    Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move3_Attack;
-                    Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                    break;
-
-                    case 4: // do nothing
-                    Console.WriteLine("Pigy did nothing. its your turn now");
-                    
-                    break;
+                //Console.WriteLine($"Now its {Pigy.Name}'s turn");
+                
+                
+                if (Pokemon.PokemonParty.internalList[0].oHealth <= 0 && Pokemon.PokemonParty.internalList[1].oHealth <= 0 && Pokemon.PokemonParty.internalList[2].oHealth <= 0) {
+                    Console.WriteLine("All of your party members has fanited GAME OVER");
+                    Environment.Exit(1);
                 }
-                
-        
-
-            //Pokemon.XpLvlCal();
-            Console.WriteLine("the end");
-                
+                // if (Pigy.oHealth <= 0 || Pigy.oHealth < 0) {
+                //     Pokemon.XpLvlCal();
+                //     Console.WriteLine($"you knocked out Pigy and won! and you got {Pokemon.XpLvlCal}");
+                // }
                 
 
+                /*
 
+                >	Greater than	x > y	
+                <	Less than	    x < y
                 
+                */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    
+                //Pokemon.XpLvlCal();
+                Console.WriteLine("the end");
                 break;
 
                 case 2:
-                Console.WriteLine($"Your now Fighting {MainClass.Cterpie.Name}\nand it has {MainClass.Cterpie.oHealth} health it's level {MainClass.Cterpie.Level}");
-                while (Caught = true || MainClass.Cterpie.oHealth <= 0) {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Would you like too.... press the number to sleact your option \n");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("fight? (1) \n");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("open your Bag? (2) \n");
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine($"Catch the {MainClass.Cterpie.Name}? (3) \n");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("Flee? (4) \n");
-                    Console.ForegroundColor = ConsoleColor.White;
-
-                    var PMove = Console.ReadKey(true).Key;
-                    // int PP = 2;
-                    // fractem 
-
-                    switch (PMove) {
-                        case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
-                        
-                        Console.WriteLine(Pokemon.PokemonParty.internalList[0].Name);
-                        Console.WriteLine($"you have 3 moves for {Pokemon.PokemonParty.internalList[0]} move 1: {Pokemon.PokemonParty.internalList[0].Move1_Name}\nmove 1: does {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\nmove 2: {Pokemon.PokemonParty.internalList[0].Move2_Name} and move 2 does {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\nmove 3: {Pokemon.PokemonParty.internalList[0].Move3_Name} and move 3 does {Pokemon.PokemonParty.internalList[0].Move3_Attack} damage \n");
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("as a note you can only use each move 2 or 3 times so use them wisly \nso witch move would you like to use? (1) (2) (3)");
-                        
-                        var Attack = Console.ReadKey(true).Key;
-
-                        switch (Attack) {
-                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                            Cterpie.oHealth -= Pokemon.PokemonParty.internalList[0].Move1_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move1_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth} health ");
-                            break;
-
-                            case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                            Cterpie.oHealth -= Pokemon.PokemonParty.internalList[0].Move2_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move2_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth} health ");
-                            break;
-
-                            case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                            Cterpie.oHealth -= Pokemon.PokemonParty.internalList[0].Move3_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move3_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth} health ");
-                            break;
-                        }
-
-                        if (Cterpie.oHealth <= 0 || Caught == true) {
-                            break;
-                        }
-
-                        Console.WriteLine($"Now its {Cterpie.Name}'s turn");
-                        switch (SystemMove) {
-                            case 1: // move 1
-                            Console.WriteLine($"Cterpie uses {Cterpie.Move1_Name} and it does {Cterpie.Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Cterpie.Move1_Attack;
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                            
-                            
-                            break;
-
-                            case 2: // move 2 
-                            Console.WriteLine($"Cterpie uses {Cterpie.Move2_Name} and it does {Cterpie.Move2_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Cterpie.Move2_Attack;
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                            break;
-                            
-                            case 3: // move 3
-                            Console.WriteLine($"Cterpie uses {Cterpie.Move3_Name} and it does {Cterpie.Move3_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Cterpie.Move3_Attack;
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");                                    
-                            break;
-
-                            case 4: // do nothing
-                            Console.WriteLine("Cterpie did nothing. its your turn now");
-                            
-                            break;
-                        }
-
-                        
-                        break; // for end of fighting
-
-                        case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
-                        
-                        
-                        Console.WriteLine($"what do you want to do in your bag? you have ");
-                        foreach (var item in Bag.PokemonBag.Pokebag) {
-                            Console.WriteLine(item);
-                            Thread.Sleep(250);
-                        }
-                        Console.WriteLine("would you like to use a item on your pokemon too heal them? (1) or do nothing (2)");
-                        var PlayerBag = Console.ReadKey(true).Key;
-                        switch (PlayerBag) {
-                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                            foreach (var item in Pokemon.PokemonParty.internalList) {
-                                Console.WriteLine(item);
-                                Thread.Sleep(250);
-                            }
-                            if (Pokemon.PokemonParty.internalList[0].oHealth > Pokemon.PokemonParty.internalList[0].MaxHealth){
-                                Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[0]} or (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
-                                var Heal = Console.ReadKey(true).Key;
-                                switch (Heal)
-                                {
-                                    case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                                    Console.WriteLine("");
-                                    Pokemon.PokemonParty.internalList[0].oHealth += 20;
-                                    Bag.PokemonBag.Pokebag[0].Amount --;
-                                    Console.WriteLine($"you now have {Bag.PokemonBag.Pokebag[0].Amount}");
-                                    break;
-                                }
-                            }
-                            break;
-                            
-                        }
-                        break;
-
-                        case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
-                        Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
-                        if (Pokemon.PokemonParty.internalList.Count == 6 && CatchOrNotCatched <= 50f) {
-                            Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
-                            Caught = false;
-                        }
-                        if (Pokemon.PokemonParty.internalList.Count < 6 && CatchOrNotCatched >= 50f) {
-                            Console.WriteLine($"You Catched the {MainClass.Cterpie.Name}!! {MainClass.Cterpie.Name} is now in your party");
-                            party.Add(Cterpie);
-                            Caught = true;
-                            foreach (var item in Pokemon.PokemonParty.internalList)
-                            {
-                                Console.WriteLine(item);
-                                Thread.Sleep(250);
-                            }
-                            Pokemon.XpLvlCal();
-                            
-                            Console.WriteLine("Would you like to go back into some tall grass (1) and look for pokemon to battle or go challeng the first gym leader (2) end the program (3)");
-
-                            var Faild = Console.ReadKey(true).Key;
-                            switch (Faild) {
-                                case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                                Console.WriteLine("your now going BACK into some tall grass to look for pokmon to battle");
-                                TallGrass();
-                                break;
-                                case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                                GymLeader1();
-                                break;
-                                case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                                Console.Clear();
-                                Environment.Exit(1);
-                                break;                           
-                            }
-
-                        }
-                        break;
-
-                        case ConsoleKey.D4 or ConsoleKey.NumPad4: // flee
-                        if (FleeOrNotToFlee < 50f) {
-                            Console.WriteLine("you got away!");
-                            Console.WriteLine(FleeOrNotToFlee);
-                        }
-                        else if (FleeOrNotToFlee > 50f) {
-                            Console.WriteLine("you didin't get away");
-                            Console.WriteLine(FleeOrNotToFlee);
-                        }
-
-                        break;
                 
-                
-                    }
-                    Pokemon.IsWild = false;
-                    break;
-                }
-
-                //Pokemon.XpLvlCal();
-                //Pokemon.PlayerMove();
                 break;
 
                 case 3:
-                Console.WriteLine($"Your now Fighting {MainClass.Houndour.Name}\nand it has {MainClass.Houndour.oHealth} health it's level {MainClass.Houndour.Level}");
-                while (Caught = true || MainClass.Houndour.oHealth <= 0) {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Would you like too.... press the number to sleact your option \n");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("fight? (1) \n");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("open your Bag? (2) \n");
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine($"Catch the {MainClass.Houndour.Name}? (3) \n");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("Flee? (4) \n");
-                    Console.ForegroundColor = ConsoleColor.White;
-
-                    var PMove = Console.ReadKey(true).Key;
-                    // int PP = 2;
-                    // fractem 
-
-                    switch (PMove) {
-                        case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
-                        
-                        Console.WriteLine(Pokemon.PokemonParty.internalList[0].Name);
-                        Console.WriteLine($"you have 3 moves for {Pokemon.PokemonParty.internalList[0]} move 1: {Pokemon.PokemonParty.internalList[0].Move1_Name}\nmove 1: does {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\nmove 2: {Pokemon.PokemonParty.internalList[0].Move2_Name} and move 2 does {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\nmove 3: {Pokemon.PokemonParty.internalList[0].Move3_Name} and move 3 does {Pokemon.PokemonParty.internalList[0].Move3_Attack} damage \n");
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("as a note you can only use each move 2 or 3 times so use them wisly \nso witch move would you like to use? (1) (2) (3)");
-                        
-                        var Attack = Console.ReadKey(true).Key;
-
-                        switch (Attack) {
-                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                            Houndour.oHealth -= Pokemon.PokemonParty.internalList[0].Move1_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move1_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                            break;
-
-                            case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                            Houndour.oHealth -= Pokemon.PokemonParty.internalList[0].Move2_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move2_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                            break;
-
-                            case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                            Houndour.oHealth -= Pokemon.PokemonParty.internalList[0].Move3_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move3_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                            break;
-                        }
-
-                        if (Houndour.oHealth <= 0 || Caught == true) {
-                            break;
-                        }
-
-                        Console.WriteLine($"Now its {Houndour.Name}'s turn");
-                        switch (SystemMove) {
-                            case 1: // move 1
-                            Console.WriteLine($"Houndour uses {Houndour.Move1_Name} and it does {Houndour.Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Houndour.Move1_Attack;
-                            
-                            break;
-
-                            case 2: // move 2 
-                            Console.WriteLine($"Houndour uses {Houndour.Move2_Name} and it does {Houndour.Move2_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Houndour.Move2_Attack;
-                            break;
-                            
-                            case 3: // move 3
-                            Console.WriteLine($"Houndour uses {Houndour.Move3_Name} and it does {Houndour.Move3_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Houndour.Move3_Attack;
-                            
-                            break;
-
-                            case 4: // do nothing
-                            Console.WriteLine("Houndour did nothing. its your turn now");
-                            
-                            break;
-                        }
-
-                        
-                        break; // for end of fighting
-
-                        case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
-                        
-                        
-                        Console.WriteLine($"what do you want to do in your bag? you have ");
-                        foreach (var item in Bag.PokemonBag.Pokebag) {
-                            Console.WriteLine(item);
-                            Thread.Sleep(250);
-                        }
-                        Console.WriteLine("would you like to use a item on your pokemon too heal them? (1) or do nothing (2)");
-                        var PlayerBag = Console.ReadKey(true).Key;
-                        switch (PlayerBag) {
-                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                            foreach (var item in Pokemon.PokemonParty.internalList) {
-                                Console.WriteLine(item);
-                                Thread.Sleep(250);
-                            }
-                            if (Pokemon.PokemonParty.internalList[0].oHealth > Pokemon.PokemonParty.internalList[0].MaxHealth){
-                                Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[0]} or (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
-                                var Heal = Console.ReadKey(true).Key;
-                                switch (Heal)
-                                {
-                                    case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                                    Console.WriteLine("");
-                                    Pokemon.PokemonParty.internalList[0].oHealth += 20;
-                                    Bag.PokemonBag.Pokebag[0].Amount --;
-                                    Console.WriteLine($"you now have {Bag.PokemonBag.Pokebag[0].Amount}");
-                                    break;
-                                }
-                            }
-                            break;
-                            
-                        }
-                        break;
-
-                        case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
-                        Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
-                        if (Pokemon.PokemonParty.internalList.Count == 6 && CatchOrNotCatched <= 50f) {
-                            Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
-                            Caught = false;
-                        }
-                        if (Pokemon.PokemonParty.internalList.Count < 6 && CatchOrNotCatched >= 50f) {
-                            Console.WriteLine($"You Catched the {MainClass.Houndour.Name}!! {MainClass.Houndour.Name} is now in your party");
-                            party.Add(Houndour);
-                            Caught = true;
-                            foreach (var item in Pokemon.PokemonParty.internalList)
-                            {
-                                Console.WriteLine(item);
-                                Thread.Sleep(250);
-                            }
-                            Pokemon.XpLvlCal();
-                            
-                            Console.WriteLine("Would you like to go back into some tall grass (1) and look for pokemon to battle or go challeng the first gym leader (2) end the program (3)");
-
-                            var Faild = Console.ReadKey(true).Key;
-                            switch (Faild) {
-                                case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                                Console.WriteLine("your now going BACK into some tall grass to look for pokmon to battle");
-                                TallGrass();
-                                break;
-                                case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                                GymLeader1();
-                                break;
-                                case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                                Console.Clear();
-                                Environment.Exit(1);
-                                break;                           
-                            }
-
-                        }
-                        break;
-
-                        case ConsoleKey.D4 or ConsoleKey.NumPad4: // flee
-                        if (FleeOrNotToFlee < 50f) {
-                            Console.WriteLine("you got away!");
-                            Console.WriteLine(FleeOrNotToFlee);
-                        }
-                        else if (FleeOrNotToFlee > 50f) {
-                            Console.WriteLine("you didin't get away");
-                            Console.WriteLine(FleeOrNotToFlee);
-                        }
-
-                        break;
                 
-                
-                    }
-                    Pokemon.IsWild = false;
-                    break;
-                }
-
-                //Pokemon.XpLvlCal();
-                //Pokemon.PlayerMove();
                 break;
 
                 case 4:
-                Console.WriteLine($"Your now Fighting {MainClass.Geodude.Name}\nand it has {MainClass.Geodude.oHealth} health and it's level {MainClass.Geodude.Level}");
-                while (Caught = true || MainClass.Geodude.oHealth <= 0) {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Would you like too.... press the number to sleact your option \n");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("fight? (1) \n");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("open your Bag? (2) \n");
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine($"Catch the {MainClass.Geodude.Name}? (3) \n");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("Flee? (4) \n");
-                    Console.ForegroundColor = ConsoleColor.White;
-
-                    var PMove = Console.ReadKey(true).Key;
-                    // int PP = 2;
-                    // fractem 
-
-                    switch (PMove) {
-                        case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
-                        
-                        Console.WriteLine(Pokemon.PokemonParty.internalList[0].Name);
-                        Console.WriteLine($"you have 3 moves for {Pokemon.PokemonParty.internalList[0]} move 1: {Pokemon.PokemonParty.internalList[0].Move1_Name}\nmove 1: does {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\nmove 2: {Pokemon.PokemonParty.internalList[0].Move2_Name} and move 2 does {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\nmove 3: {Pokemon.PokemonParty.internalList[0].Move3_Name} and move 3 does {Pokemon.PokemonParty.internalList[0].Move3_Attack} damage \n");
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("as a note you can only use each move 2 or 3 times so use them wisly \nso witch move would you like to use? (1) (2) (3)");
-                        
-                        var Attack = Console.ReadKey(true).Key;
-
-                        switch (Attack) {
-                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                            Geodude.oHealth -= Pokemon.PokemonParty.internalList[0].Move1_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move1_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                            break;
-
-                            case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                            Geodude.oHealth -= Pokemon.PokemonParty.internalList[0].Move2_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move2_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                            break;
-
-                            case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                            Geodude.oHealth -= Pokemon.PokemonParty.internalList[0].Move3_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move3_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                            break;
-                        }
-
-                        if (Geodude.oHealth <= 0 || Caught == true) {
-                            break;
-                        }
-
-                        Console.WriteLine($"Now its {Geodude.Name}'s turn");
-                        switch (SystemMove) {
-                            case 1: // move 1
-                            Console.WriteLine($"Geodude uses {Geodude.Move1_Name} and it does {Geodude.Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Geodude.Move1_Attack;
-                            
-                            break;
-
-                            case 2: // move 2 
-                            Console.WriteLine($"Geodude uses {Geodude.Move2_Name} and it does {Geodude.Move2_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Geodude.Move2_Attack;
-                            break;
-                            
-                            case 3: // move 3
-                            Console.WriteLine($"Geodude uses {Geodude.Move3_Name} and it does {Geodude.Move3_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Geodude.Move3_Attack;
-                            
-                            break;
-
-                            case 4: // do nothing
-                            Console.WriteLine("Geodude did nothing. its your turn now");
-                            
-                            break;
-                        }
-
-                        
-                        break; // for end of fighting
-
-                        case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
-                        
-                        
-                        Console.WriteLine($"what do you want to do in your bag? you have ");
-                        foreach (var item in Bag.PokemonBag.Pokebag) {
-                            Console.WriteLine(item);
-                            Thread.Sleep(250);
-                        }
-                        Console.WriteLine("would you like to use a item on your pokemon too heal them? (1) or do nothing (2)");
-                        var PlayerBag = Console.ReadKey(true).Key;
-                        switch (PlayerBag) {
-                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                            foreach (var item in Pokemon.PokemonParty.internalList) {
-                                Console.WriteLine(item);
-                                Thread.Sleep(250);
-                            }
-                            if (Pokemon.PokemonParty.internalList[0].oHealth > Pokemon.PokemonParty.internalList[0].MaxHealth){
-                                Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[0]} or (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
-                                var Heal = Console.ReadKey(true).Key;
-                                switch (Heal)
-                                {
-                                    case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                                    Console.WriteLine("");
-                                    Pokemon.PokemonParty.internalList[0].oHealth += 20;
-                                    Bag.PokemonBag.Pokebag[0].Amount --;
-                                    Console.WriteLine($"you now have {Bag.PokemonBag.Pokebag[0].Amount}");
-                                    break;
-                                }
-                            }
-                            break;
-                            
-                        }
-                        break;
-
-                        case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
-                        Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
-                        if (Pokemon.PokemonParty.internalList.Count == 6 && CatchOrNotCatched <= 50f) {
-                            Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
-                            Caught = false;
-                        }
-                        if (Pokemon.PokemonParty.internalList.Count < 6 && CatchOrNotCatched >= 50f) {
-                            Console.WriteLine($"You Catched the {MainClass.Geodude.Name}!! {MainClass.Geodude.Name} is now in your party");
-                            party.Add(Geodude);
-                            Caught = true;
-                            foreach (var item in Pokemon.PokemonParty.internalList)
-                            {
-                                Console.WriteLine(item);
-                                Thread.Sleep(250);
-                            }
-                            Pokemon.XpLvlCal();
-                            
-                            Console.WriteLine("Would you like to go back into some tall grass (1) and look for pokemon to battle or go challeng the first gym leader (2) end the program (3)");
-
-                            var Faild = Console.ReadKey(true).Key;
-                            switch (Faild) {
-                                case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                                Console.WriteLine("your now going BACK into some tall grass to look for pokmon to battle");
-                                TallGrass();
-                                break;
-                                case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                                GymLeader1();
-                                break;
-                                case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                                Console.Clear();
-                                Environment.Exit(1);
-                                break;                           
-                            }
-
-                        }
-                        break;
-
-                        case ConsoleKey.D4 or ConsoleKey.NumPad4: // flee
-                        if (FleeOrNotToFlee < 50f) {
-                            Console.WriteLine("you got away!");
-                            Console.WriteLine(FleeOrNotToFlee);
-                        }
-                        else if (FleeOrNotToFlee > 50f) {
-                            Console.WriteLine("you didin't get away");
-                            Console.WriteLine(FleeOrNotToFlee);
-                        }
-
-                        break;
                 
-                
-                    }
-                    Pokemon.IsWild = false;
-                    break;
-                }
-
-                //Pokemon.XpLvlCal();
-                //Pokemon.PlayerMove();
                 break;
 
                 case 5:
-                Console.WriteLine($"Your now Fighting {MainClass.Torrcat.Name}\nand it has {MainClass.Torrcat.oHealth} health and it's level {MainClass.Torrcat.Level}");
-                while (Caught = true || MainClass.Torrcat.oHealth <= 0) {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Would you like too.... press the number to sleact your option \n");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("fight? (1) \n");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("open your Bag? (2) \n");
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    Console.WriteLine($"Catch the {MainClass.Torrcat.Name}? (3) \n");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("Flee? (4) \n");
-                    Console.ForegroundColor = ConsoleColor.White;
-
-                    var PMove = Console.ReadKey(true).Key;
-                    // int PP = 2;
-                    // fractem 
-
-                    switch (PMove) {
-                        case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
-                        
-                        Console.WriteLine(Pokemon.PokemonParty.internalList[0].Name);
-                        Console.WriteLine($"you have 3 moves for {Pokemon.PokemonParty.internalList[0]} move 1: {Pokemon.PokemonParty.internalList[0].Move1_Name}\nmove 1: does {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\nmove 2: {Pokemon.PokemonParty.internalList[0].Move2_Name} and move 2 does {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\nmove 3: {Pokemon.PokemonParty.internalList[0].Move3_Name} and move 3 does {Pokemon.PokemonParty.internalList[0].Move3_Attack} damage \n");
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("as a note you can only use each move 2 or 3 times so use them wisly \nso witch move would you like to use? (1) (2) (3)");
-                        
-                        var Attack = Console.ReadKey(true).Key;
-
-                        switch (Attack) {
-                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                            Geodude.oHealth -= Pokemon.PokemonParty.internalList[0].Move1_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move1_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                            break;
-
-                            case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                            Geodude.oHealth -= Pokemon.PokemonParty.internalList[0].Move2_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move2_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                            break;
-
-                            case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                            Geodude.oHealth -= Pokemon.PokemonParty.internalList[0].Move3_Attack;
-                            Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move3_Attack}\n the {Pigy.Name} is now at {Pigy.oHealth}");
-                            break;
-                        }
-
-                        if (Torrcat.oHealth <= 0 || Caught == true) {
-                            break;
-                        }
-
-                        Console.WriteLine($"Now its {Torrcat.Name}'s turn");
-                        switch (SystemMove) {
-                            case 1: // move 1
-                            Console.WriteLine($"Torrcat uses {Torrcat.Move1_Name} and it does {Torrcat.Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Torrcat.Move1_Attack;
-                            
-                            break;
-
-                            case 2: // move 2 
-                            Console.WriteLine($"Torrcat uses {Torrcat.Move2_Name} and it does {Torrcat.Move2_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Torrcat.Move2_Attack;
-                            break;
-                            
-                            case 3: // move 3
-                            Console.WriteLine($"Torrcat uses {Torrcat.Move3_Name} and it does {Torrcat.Move3_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
-                            Pokemon.PokemonParty.internalList[0].oHealth -= Torrcat.Move3_Attack;
-                            
-                            break;
-
-                            case 4: // do nothing
-                            Console.WriteLine("Torrcat did nothing. its your turn now");
-                            
-                            break;
-                        }
-
-                        
-                        break; // for end of fighting
-
-                        case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
-                        
-                        
-                        Console.WriteLine($"what do you want to do in your bag? you have ");
-                        foreach (var item in Bag.PokemonBag.Pokebag) {
-                            Console.WriteLine(item);
-                            Thread.Sleep(250);
-                        }
-                        Console.WriteLine("would you like to use a item on your pokemon too heal them? (1) or do nothing (2)");
-                        var PlayerBag = Console.ReadKey(true).Key;
-                        switch (PlayerBag) {
-                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                            foreach (var item in Pokemon.PokemonParty.internalList) {
-                                Console.WriteLine(item);
-                                Thread.Sleep(250);
-                            }
-                            if (Pokemon.PokemonParty.internalList[0].oHealth > Pokemon.PokemonParty.internalList[0].MaxHealth){
-                                Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[0]} or (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
-                                var Heal = Console.ReadKey(true).Key;
-                                switch (Heal)
-                                {
-                                    case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                                    Console.WriteLine("");
-                                    Pokemon.PokemonParty.internalList[0].oHealth += 20;
-                                    Bag.PokemonBag.Pokebag[0].Amount --;
-                                    Console.WriteLine($"you now have {Bag.PokemonBag.Pokebag[0].Amount}");
-                                    break;
-                                }
-                            }
-                            break;
-                            
-                        }
-                        break;
-
-                        case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
-                        Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
-                        if (Pokemon.PokemonParty.internalList.Count == 6 && CatchOrNotCatched <= 50f) {
-                            Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
-                            Caught = false;
-                        }
-                        if (Pokemon.PokemonParty.internalList.Count < 6 && CatchOrNotCatched >= 50f) {
-                            Console.WriteLine($"You Catched the {MainClass.Torrcat.Name}!! {MainClass.Torrcat.Name} is now in your party");
-                            party.Add(Torrcat);
-                            Caught = true;
-                            foreach (var item in Pokemon.PokemonParty.internalList)
-                            {
-                                Console.WriteLine(item);
-                                Thread.Sleep(250);
-                            }
-                            Pokemon.XpLvlCal();
-                            
-                            Console.WriteLine("Would you like to go back into some tall grass (1) and look for pokemon to battle or go challeng the first gym leader (2) end the program (3)");
-
-                            var Faild = Console.ReadKey(true).Key;
-                            switch (Faild) {
-                                case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                                Console.WriteLine("your now going BACK into some tall grass to look for pokmon to battle");
-                                TallGrass();
-                                break;
-                                case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                                GymLeader1();
-                                break;
-                                case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                                Console.Clear();
-                                Environment.Exit(1);
-                                break;                           
-                            }
-
-                        }
-                        break;
-
-                        case ConsoleKey.D4 or ConsoleKey.NumPad4: // flee
-                        if (FleeOrNotToFlee < 50f) {
-                            Console.WriteLine("you got away!");
-                            Console.WriteLine(FleeOrNotToFlee);
-                        }
-                        else if (FleeOrNotToFlee > 50f) {
-                            Console.WriteLine("you didin't get away");
-                            Console.WriteLine(FleeOrNotToFlee);
-                        }
-
-                        break;
                 
-                
-                    }
-                    Pokemon.IsWild = false;
-                    break;
-                }
-
-                //Pokemon.XpLvlCal();
-                //Pokemon.PlayerMove();
                 break;
             
             }
             
 
+        }
+        
+        public static void PlayerMove() {
+            bool Caught = false;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Would you like too.... press the number to sleact your option \n");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("fight? (1) \n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("open your Bag? (2) \n");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine($"Catch the {MainClass.Pigy.Name}? (3) \n");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Flee? (4) \n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("its your turn now");
+            Console.ForegroundColor = ConsoleColor.White;
+            
+            var PlayerMove = Console.ReadKey(true).Key;
+            switch (PlayerMove) {
+                
+                case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
+                    
+                Console.WriteLine(Pokemon.PokemonParty.internalList[0].Name);
+                Console.WriteLine($"you have 3 moves for {Pokemon.PokemonParty.internalList[0]} move 1: {Pokemon.PokemonParty.internalList[0].Move1_Name}\nmove 1: does {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\nmove 2: {Pokemon.PokemonParty.internalList[0].Move2_Name} and move 2 does {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\nmove 3: {Pokemon.PokemonParty.internalList[0].Move3_Name} and move 3 does {Pokemon.PokemonParty.internalList[0].Move3_Attack} damage \n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                //Console.WriteLine("as a note you can only use each move 2 or 3 times so use them wisly \nso witch move would you like to use? (1) (2) (3)");
+                Console.ForegroundColor = ConsoleColor.White;
+                var AttackTurn = Console.ReadKey(true).Key;
+
+                switch (AttackTurn) {
+                    case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                    Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move1_Attack;
+                    Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\n the {Pigy.Name} is now at {Pigy.oHealth} health");
+                    if (Pigy.oHealth <= 0 || Pigy.oHealth < 0) {
+                        Console.WriteLine($"you knocked out Pigy and won! and you got :");
+                        Pokemon.XpLvlCal();
+                        break;
+                    }
+                    PokemonMove();
+                    break;
+
+                    case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                    Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move2_Attack;
+                    Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\n the {Pigy.Name} is now at {Pigy.oHealth} health");
+                    if (Pigy.oHealth <= 0 || Pigy.oHealth < 0) {
+                        Console.WriteLine($"you knocked out Pigy and won! and you got :");
+                        Pokemon.XpLvlCal();
+                        break;
+                    }
+                    PokemonMove();
+                    break;
+
+                    case ConsoleKey.D3 or ConsoleKey.NumPad3:
+                    Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move3_Attack;
+                    Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move3_Attack} damges\n the {Pigy.Name} is now at {Pigy.oHealth} health");
+                    if (Pigy.oHealth <= 0 || Pigy.oHealth < 0) {
+                        Console.WriteLine($"you knocked out Pigy and won! and you got :");
+                        Pokemon.XpLvlCal();
+                        break;
+                    }
+                    PokemonMove();
+                    break;
+                }
+
+                if (Pigy.oHealth <= 0 || Pigy.oHealth < 0) {
+                    Console.WriteLine($"you knocked out Pigy and won! and you got :");
+                    Pokemon.XpLvlCal();
+                    break;
+                }
+
+                
+                
+                break; // for end of fighting case
+
+                case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
+                Console.WriteLine($"what do you want to do in your bag? you have ");
+                foreach (var item in Bag.PokemonBag.Pokebag) {
+                    Console.WriteLine(item);
+                    Thread.Sleep(250);
+                }
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("would you like to use a item on your pokemon too heal them? (1) or do nothing (2)");
+                Console.WriteLine("")
+                var PlayerBag = Console.ReadKey(true).Key;
+                Console.ForegroundColor = ConsoleColor.White;
+                switch (PlayerBag) {
+                    case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                    foreach (var item in Pokemon.PokemonParty.internalList) {
+                        Console.WriteLine(item);
+                        Thread.Sleep(250);
+                    }
+                    if (Pokemon.PokemonParty.internalList[0].oHealth > Pokemon.PokemonParty.internalList[0].MaxHealth){
+                        Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[0]} or (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
+                        var Heal = Console.ReadKey(true).Key;
+                        switch (Heal)
+                        {
+                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                            Console.WriteLine("");
+                            Pokemon.PokemonParty.internalList[0].oHealth += 20;
+                            Bag.PokemonBag.Pokebag[0].Amount --;
+                            Console.WriteLine($"you now have {Bag.PokemonBag.Pokebag[0].Amount}");
+                            break;
+                        }
+                    }
+                    break;
+                    case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                    Console.WriteLine("you did nothing");
+                    break;
+                    
+                }
+                PokemonMove();
+                break; // end of BAG case.
+
+                case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
+                Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
+                if (Pokemon.PokemonParty.internalList.Count == 6 && CatchOrNotCatched <= 50f) {
+                    Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
+                    //Caught = false;
+                }
+                if (Pokemon.PokemonParty.internalList.Count < 6 && CatchOrNotCatched >= 50f) {
+                    Console.WriteLine($"You Catched the {MainClass.Pigy.Name}!! {MainClass.Pigy.Name} is now in your party");
+                    party.Add(Pigy);
+                    Caught = true;
+                    foreach (var item in Pokemon.PokemonParty.internalList)
+                    {
+                        Console.WriteLine(item);
+                        Thread.Sleep(250);
+                    }
+                    Pokemon.XpLvlCal();
+                    
+                    Console.WriteLine("Would you like to go back into some tall grass (1) and look for pokemon to battle or go challeng the first gym leader (2) end the program (3)");
+
+                    var Faild = Console.ReadKey(true).Key;
+                    switch (Faild) {
+                        case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                        Console.WriteLine("your now going BACK into some tall grass to look for pokmon to battle");
+                        TallGrass();
+                        break;
+                        case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                        GymLeader1();
+                        break;
+                        case ConsoleKey.D3 or ConsoleKey.NumPad3:
+                        Console.Clear();
+                        Environment.Exit(1);
+                        break;                           
+                    }
+
+                }
+                
+                break; // end of catch case
+
+                case ConsoleKey.D4 or ConsoleKey.NumPad4: // flee
+                if (FleeOrNotToFlee < 50f) {
+                    Console.WriteLine("you got away!");
+                    Console.WriteLine(FleeOrNotToFlee);
+                    Pokemon.XpLvlCal();
+                    TallGrass();
+                }
+                else if (FleeOrNotToFlee > 50f) {
+                    Console.WriteLine("you didin't get away");
+                    Console.WriteLine(FleeOrNotToFlee);
+                    PokemonMove();
+                }
+                break;
+            
+            
+            }
+        }
+        
+        public static void PokemonMove() {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("its now Pigy's turn");
+            Console.ForegroundColor = ConsoleColor.White;
+            switch (SystemMove) {
+                case 1: // move 1
+                Console.WriteLine($"Pigy uses {Pigy.Move1_Name} and it does {Pigy.Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
+                Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move1_Attack;
+                Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
+                PlayerMove();
+                break;
+
+                case 2: // move 2 
+                Console.WriteLine($"Pigy uses {Pigy.Move2_Name} and it does {Pigy.Move2_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
+                Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move2_Attack;
+                Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
+                PlayerMove();
+                break;
+                
+                case 3: // move 3
+                Console.WriteLine($"Pigy uses {Pigy.Move3_Name} and it does {Pigy.Move3_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
+                Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move3_Attack;
+                Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
+                PlayerMove();
+                break;
+
+                case 4: // do nothing
+                Console.WriteLine("Pigy did nothing. its your turn now");
+                PlayerMove();
+                break;
+            }
+            
+            if (Pokemon.PokemonParty.internalList[0].oHealth <= 0 ) {
+                Console.WriteLine("one of your party members has fanited GAME OVER");
+                Environment.Exit(1);
+            }
         }
         public static void GymLeader1() {
 
@@ -1138,7 +505,8 @@ namespace Program {
         public static bool PlayerBag = false;
         public static bool PlayerFlee = false;
 
-        public static int FindPokemon() => Random.Shared.Next(1, 1);
+        public static int FindPokemon = 1;
+        //public static int FindPokemon() => Random.Shared.Next(1, 1);
         public static int WildPoekmonHealth() => Random.Shared.Next(39, 69);
         public static int RndHealth =  Random.Shared.Next(39, 69);
         public static int RndAttack() => Random.Shared.Next(13, 41);
@@ -1178,7 +546,7 @@ namespace Program {
 
 
             val0 = B * L;
-            val1 = 7 * S;
+            val1 = 2 * S;
 
             XP = val0 / val1 * E * A * T * P * F * V;
 
@@ -1258,7 +626,8 @@ namespace Program {
             //     Max1 *= 2.6;
             // }
 
-            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0].Name} is now {Pokemon.PokemonParty.internalList[0].Level}");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0].Name} is now  leavl {Pokemon.PokemonParty.internalList[0].Level}");
             // Console.WriteLine($"your {Pokemon.PokemonParty.internalList[1].Name} is now {Pokemon.PokemonParty.internalList[1].Level}");
             // Console.WriteLine($"your {Pokemon.PokemonParty.internalList[2].Name} is now {Pokemon.PokemonParty.internalList[2].Level}");
             // Console.WriteLine($"your {Pokemon.PokemonParty.internalList[3].Name} is now {Pokemon.PokemonParty.internalList[3].Level}");
@@ -1288,7 +657,9 @@ namespace Program {
             //     //     break;
             //     // }
             // }   
-            
+
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public static bool IsWild;
@@ -1326,10 +697,10 @@ namespace Program {
 
         public class Bag {
 
-            public string Name { get; set;}
+            public string Name { get; set; }
             public int Amount { get; set; }
             public string Decript { get; set; }
-            public static int amount { get; set;} 
+            public static int amount { get; set; } 
             
             public Bag(string name, int amount, string decript) {
                 this.Name = name;
@@ -1347,7 +718,7 @@ namespace Program {
             }
 
             public override string ToString() {
-                return Name + ": " + "descritptoon " + Decript + ". Amount is : " + Amount + " each";
+                return Name + ": " + "descritpton " + Decript + ". Amount is : " + Amount + " each";
             }
 
         public class PokemonBag : IReadOnlyList<Bag>
