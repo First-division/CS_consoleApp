@@ -14,10 +14,18 @@ namespace Program {
         static Pokemon Pigy = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Pigy", Idnumber: 000, XpCase: 50, move1_name: "Wind slash", move2_name: "Tackle", move3_name: "kick", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
         static Pokemon Eevee = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Eevee", Idnumber: 133, XpCase: 65, move1_name: "tackle", move2_name: "Tail Wip", move3_name: "Bite", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
         static Pokemon Cterpie = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Capterpie", Idnumber: 010, XpCase: 39, move1_name: "Bug Bite", move2_name: "String Shoot", move3_name: "Nap", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
-        static Pokemon Geodude = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Geodude", Idnumber: 074, XpCase: 60, move1_name: "Rockc Punch", move2_name: "Light Punch", move3_name: "", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
+        static Pokemon Geodude = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Geodude", Idnumber: 074, XpCase: 60, move1_name: "Rockc Punch", move2_name: "Light Punch", move3_name: "Duboble Kick", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
         static Pokemon Houndour = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Houndour", Idnumber: 228, XpCase: 66, move1_name: "Dark Flare", move2_name: "Dark Bite", move3_name: "howel", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
         static Pokemon Torrcat = new Pokemon(exp: 0, level: 1, maxhealth: Pokemon.WildPoekmonHealth(), Ohealth: Pokemon.RndHealth, name: "Torrcat", Idnumber: 726, XpCase: 147, move1_name: "Fire Fang", move2_name: "Claw Slash", move3_name: "FlameThrower", move1_attack: Pokemon.RndAttack(), move2_attack: Pokemon.RndAttack(), move3_attack: Pokemon.RndAttack());
         // Wilds ^
+
+        static Pokemon Kyogre = new Pokemon(exp: 0, level: 15,maxhealth: Pokemon.GymPoekmonHealth(),Ohealth: Pokemon.RndHealth, "Kyogre", Idnumber: 382, XpCase: 201, "Aqua Storm", "spring tides", "Ocean Cyclone", 120, 90, 125);
+        static Pokemon Swampert = new Pokemon(exp: 0, level: 14,maxhealth: Pokemon.GymPoekmonHealth(),Ohealth: Pokemon.RndHealth, "Swampert", Idnumber: 260, XpCase: 150, "Strongrm Impact", "Hdryo Pump", "Waterfall", 100, 85, 110);
+
+        // Gym one pokemon ^
+
+
+
         // Bag
         public static Bag SmllHeal = new Bag(name: "Small Heal", amount: 1, decript: "Heals 20 Health of any 1 pokemon per item");
         public static Bag MedHeal = new Bag(name: "Med Heal", amount: 1, decript: "Heals 40 Health of any 1 pokemon per item");
@@ -470,7 +478,7 @@ namespace Program {
             }
         }
         public static void GymLeader1() {
-
+            // make 3 new pokemon for a gym battle
         } 
     }
 
@@ -527,6 +535,7 @@ namespace Program {
         public static int FindPokemon = 1;
         //public static int FindPokemon() => Random.Shared.Next(1, 1);
         public static int WildPoekmonHealth() => Random.Shared.Next(39, 69);
+        public static int GymPoekmonHealth() => Random.Shared.Next(110, 230);
         public static int RndHealth =  Random.Shared.Next(39, 69);
         public static int RndAttack() => Random.Shared.Next(13, 41);
 
@@ -565,9 +574,9 @@ namespace Program {
 
 
             val0 = B * L;
-            val1 = 2 * S;
+            val1 = 7 * S;
 
-            XP = val0 / val1 * E * A * T * P * F * V;
+            XP = val0 / val1 * E * A * T * P * F * V * 2;
 
             if (IsWild == true) {
                 A = 1;
@@ -662,12 +671,6 @@ namespace Program {
             
             
             // if (Pokemon.PokemonParty.internalList[0].Exp > 0) {
-                
-                
-                
-                
-           
-
 
             Console.ForegroundColor = ConsoleColor.White;
         }
