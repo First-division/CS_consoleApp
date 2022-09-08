@@ -21,8 +21,9 @@ namespace Program {
 
         static Pokemon Kyogre = new Pokemon(exp: 0, level: 15,maxhealth: Pokemon.GymPoekmonHealth(),Ohealth: Pokemon.RndHealth, "Kyogre", Idnumber: 382, XpCase: 201, "Aqua Storm", "spring tides", "Ocean Cyclone", 120, 90, 125);
         static Pokemon Swampert = new Pokemon(exp: 0, level: 14,maxhealth: Pokemon.GymPoekmonHealth(),Ohealth: Pokemon.RndHealth, "Swampert", Idnumber: 260, XpCase: 150, "Strongrm Impact", "Hdryo Pump", "Waterfall", 100, 85, 110);
+        static Pokemon Inteleon = new Pokemon(exp: 0, level: 12,maxhealth: Pokemon.GymPoekmonHealth(),Ohealth: Pokemon.RndHealth, "Inteleon", Idnumber: 818, XpCase: 120, "Aqua Bullet", "Water Disk", "Surf", 110, 90, 75);
 
-        // Gym one pokemon ^
+        // Gym one pokemon ^ 
 
 
 
@@ -33,140 +34,198 @@ namespace Program {
         public static Bag Revive = new Bag(name: "Reveive", amount: 1, decript: "Brings of 1 any pokemon back from knock out too at least half health");
 
         //static int o = Pokemon.RndHealth;
-
-        private static Pokemon.PokemonParty party = new Pokemon.PokemonParty();
-
+        static bool GoodValue = false;
+        public static Pokemon.WildParty Wild = new Pokemon.WildParty();
+        public static Pokemon.PokemonParty party = new Pokemon.PokemonParty();
         public static void Main() {
-            
-            //var pokemons = Enumerable.Repeat<Func<Pokemon>>(() => new Pokemon()
-            // Console.WriteLine();
-            // Console.WriteLine(Charmander);            
-            // Console.WriteLine(Squirtle);
-            // Console.WriteLine(blubasaur);
-            // Console.WriteLine();
-            // Console.WriteLine(Torrcat);
-            // Console.WriteLine(Cterpie);
-            // Console.WriteLine(Eevee);
-            // Console.WriteLine(Pigy);
-            // Console.WriteLine(Geodude);
-            // Console.WriteLine(Houndour);
+            // Console.WriteLine("asking for some input please healppp");
             
             
-            //var isInParty = Pokemon.IsPokemonInParty(party, Charmander);     // TRUE
-            //Pokemon.IsPokemonInParty(party, Charmander);
             
-            //party.Remove(Charmander);
-            //party.Add(Squirtle);
-            //Pokemon.IsPokemonInParty(party, Squirtle);
-            // foreach (var item in Pokemon.PokemonParty.internalList) {
-            //     Console.WriteLine(item);
-            // }
+            while (!GoodValue) 
+            {
+                var Test = Console.ReadKey(true).Key;
+                switch (Test) {
+                    case ConsoleKey.D1:
+                    //GoodValue = false;
+                    Console.WriteLine("you hit 1");
+                    GoodValue = true;
+                    break;
 
-            //Console.WriteLine(isInParty);
-            //Console.WriteLine(party);
+                    default:
+                    //GoodValue = true;
+                    Console.WriteLine("Please try again");
+                    //Test = Console.ReadKey(true).Key;
+                    //how can i promt to get input again?
+                    continue;
+                }
+            }
+            
 
-        
+            /* 
+            
+            could i run a while loop over a switch with a bool and if the bool ever is true then to break. 
+            4but if the when you press something other then the inputs it would be false? and just repeat till you get a valid input?
+            */
 
+
+
+
+
+
+            //var Wild = new Pokemon.WildParty();
             var UserBag = new Bag.PokemonBag();
             var party = new Pokemon.PokemonParty();
             
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\nwould you like too pick a starter pokemon? you have 3 choicse\n");
             Console.ForegroundColor = ConsoleColor.Red;
+            Thread.Sleep(500);
             Console.WriteLine($"Your first choice is {Charmander.Name} (1)");
             Console.ForegroundColor = ConsoleColor.Blue;
+            Thread.Sleep(500);
             Console.WriteLine($"Your second choice is {MainClass.Squirtle.Name} (2)");
             Console.ForegroundColor = ConsoleColor.Green;
+            Thread.Sleep(500);
             Console.WriteLine($"Your third choice is {MainClass.blubasaur.Name} (3)");
             Console.ForegroundColor = ConsoleColor.White;
+            Thread.Sleep(500);
             UserBag.Add(SmllHeal);
             SmllHeal.Amount = 4;
             UserBag.Add(Revive);
             Revive.Amount = 3;
-            //Console.WriteLine($"you now have {Bag.PokemonBag.Pokebag[0].Amount} of {Bag.PokemonBag.Pokebag[0].Name}");
+
             
-            var Starter = Console.ReadKey(true).Key;
-
-            switch (Starter) {
-                case ConsoleKey.D1 or ConsoleKey.NumPad1: // charmander
-                party.Add(Charmander);
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"you choose {Charmander.Name}\nand is also now in your party");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"Your {Charmander.Name} is level {Charmander.Level} and has {Charmander.Exp} Exp.\nThis pokemon also has 3 moves. {Charmander.Move1_Name} and it does {Charmander.Move1_Attack} damage \n{Charmander.Move2_Name} and it does {Charmander.Move2_Attack} damge \n{Charmander.Move3_Name} and it does {Charmander.Move3_Attack} damage");
-                foreach (var item in Pokemon.PokemonParty.internalList) {
+            var GoodValue1 = false;
+            while (!GoodValue1) 
+            {
+                var Starter = Console.ReadKey(true).Key;
+                switch (Starter) {
+                    case ConsoleKey.D1 or ConsoleKey.NumPad1: // charmander
+                    party.Add(Charmander);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"you choose {Charmander.Name}\nand is also now in your party");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(item);
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
-                
-                break;
+                    if(Pokemon.PokemonParty.internalList[0].MaxHealth <= 54) {
+                        Pokemon.PokemonParty.internalList[0].MaxHealth += 12;
+                        Pokemon.PokemonParty.internalList[0].oHealth += 12;
+                        Pokemon.PokemonParty.internalList[0].oHealth += 12;
+                    }
+                    Console.WriteLine($"Your {Charmander.Name} is level {Charmander.Level} and has {Charmander.Exp} Exp.\nThis pokemon also has 3 moves. {Charmander.Move1_Name} and it does {Charmander.Move1_Attack} damage \n{Charmander.Move2_Name} and it does {Charmander.Move2_Attack} damge \n{Charmander.Move3_Name} and it does {Charmander.Move3_Attack} damage");
+                    foreach (var item in Pokemon.PokemonParty.internalList) {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine(item);
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    //Console.WriteLine(Percent5);
+                    GoodValue1 = true;
+                    break;
 
-                case ConsoleKey.D2 or ConsoleKey.NumPad2: // Squirtle
-                party.Add(Squirtle);
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine($"you choose {MainClass.Squirtle.Name}\nand is now in your party");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"Your {MainClass.Squirtle.Name} is level {MainClass.Squirtle.Level} and has {MainClass.Squirtle.Exp} Exp. \n This pokemon also has 3 moves. {MainClass.Squirtle.Move1_Name} and it does {MainClass.Squirtle.Move1_Attack} damage \n {MainClass.Squirtle.Move2_Name} and it does {MainClass.Squirtle.Move2_Attack} damge \n {MainClass.Squirtle.Move3_Name} and it does {MainClass.Squirtle.Move3_Attack} damage");
-                foreach (var item in Pokemon.PokemonParty.internalList) {
+                    case ConsoleKey.D2 or ConsoleKey.NumPad2: // Squirtle
+                    party.Add(Squirtle);
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine(item);
+                    Console.WriteLine($"you choose {MainClass.Squirtle.Name}\nand is now in your party");
                     Console.ForegroundColor = ConsoleColor.White;
-                }
-                break;
+                    if(Pokemon.PokemonParty.internalList[0].MaxHealth <= 54) {
+                        Pokemon.PokemonParty.internalList[0].MaxHealth += 11;
+                        Pokemon.PokemonParty.internalList[0].oHealth += 11;
+                    }
+                    Console.WriteLine($"Your {MainClass.Squirtle.Name} is level {MainClass.Squirtle.Level} and has {MainClass.Squirtle.Exp} Exp. \n This pokemon also has 3 moves. {MainClass.Squirtle.Move1_Name} and it does {MainClass.Squirtle.Move1_Attack} damage \n {MainClass.Squirtle.Move2_Name} and it does {MainClass.Squirtle.Move2_Attack} damge \n {MainClass.Squirtle.Move3_Name} and it does {MainClass.Squirtle.Move3_Attack} damage");
+                    foreach (var item in Pokemon.PokemonParty.internalList) {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine(item);
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    GoodValue1 = true;
+                    break;
 
-                case ConsoleKey.D3 or ConsoleKey.NumPad3: // blubasaur
-                party.Add(blubasaur);
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"you choose {MainClass.blubasaur.Name}\nand is now in your party");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"Your {MainClass.blubasaur.Name} is level {MainClass.blubasaur.Level} and has {MainClass.blubasaur.Exp} Exp. \n This pokemon also has 3 moves. {MainClass.blubasaur.Move1_Name} and it does {MainClass.blubasaur.Move1_Attack} damage \n {MainClass.blubasaur.Move2_Name} and it does {MainClass.blubasaur.Move2_Attack} damge \n {MainClass.blubasaur.Move3_Name} and it does {MainClass.blubasaur.Move3_Attack} damage");
-                foreach (var item in Pokemon.PokemonParty.internalList) {
+                    case ConsoleKey.D3 or ConsoleKey.NumPad3: // blubasaur
+                    party.Add(blubasaur);
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(item);
+                    Console.WriteLine($"you choose {MainClass.blubasaur.Name}\nand is now in your party");
                     Console.ForegroundColor = ConsoleColor.White;
-                }
-                break;
-                
-            }
+                    if(Pokemon.PokemonParty.internalList[0].MaxHealth <= 54) {
+                        Pokemon.PokemonParty.internalList[0].MaxHealth += 11;
+                        Pokemon.PokemonParty.internalList[0].oHealth += 11;
+                    }
+                    Console.WriteLine($"Your {MainClass.blubasaur.Name} is level {MainClass.blubasaur.Level} and has {MainClass.blubasaur.Exp} Exp. \n This pokemon also has 3 moves. {MainClass.blubasaur.Move1_Name} and it does {MainClass.blubasaur.Move1_Attack} damage \n {MainClass.blubasaur.Move2_Name} and it does {MainClass.blubasaur.Move2_Attack} damge \n {MainClass.blubasaur.Move3_Name} and it does {MainClass.blubasaur.Move3_Attack} damage");
+                    foreach (var item in Pokemon.PokemonParty.internalList) {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine(item);
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    GoodValue1 = true;
+                    break;
 
+                    default:
+                    Console.WriteLine("Please try again");
+                    Starter = Console.ReadKey(true).Key;
+                    continue;
+                
+                }
+            }
+            
+
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("in your bag you have: ");
             foreach (var item in UserBag) {
+                Thread.Sleep(425);
                 Console.WriteLine(item);
             }
+            Thread.Sleep(500);
             Console.WriteLine("hit any key to contine");
+            Console.ForegroundColor = ConsoleColor.White;
             Thread.Sleep(150);
-            Pokemon.XpLvlCal();
             Console.ReadKey(true);
             
             Console.ForegroundColor = ConsoleColor.Green;
+            Thread.Sleep(500);
             Console.WriteLine("Now Would you like to go out and look for pokemon too battle and catch? (1)");
             Console.ForegroundColor = ConsoleColor.Blue;
+            Thread.Sleep(500);
             Console.WriteLine("Or chanllage the gym leader of the first gym? (2)");
             Console.ForegroundColor = ConsoleColor.White;
+            Thread.Sleep(100);
             var Game = Console.ReadKey(true).Key;
-
-            switch (Game) {
-                case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("your now going into some tall grass too look for pokemon to catch");
-                Console.ForegroundColor = ConsoleColor.White;
-                TallGrass();
-                break;
-
-                case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                Console.WriteLine("if you want to fight the first gym leader then you need more then 2 poekmon");
-                if (Pokemon.PokemonParty.internalList.Count > 2) {
-                    Console.WriteLine("you have more then 2 pokemon so you can fight the first gym leader");
-                    GymLeader1();
-                }
-                else {
-                    Console.WriteLine("come back when you have more then 2 pokemon so you cam fight the gym leader");
+            var GoodValue2 = false;
+            while (!GoodValue) {
+                switch (Game) {
+                    case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine("your now going into the wild too look for pokemon to catch / battle");
+                    Console.ForegroundColor = ConsoleColor.White;
                     TallGrass();
-                }
-                break;
+                    GoodValue2 = true;
+                    break;
+
+                    case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                    Console.WriteLine("if you want to fight the first gym leader then you need more then 2 poekmon");
+                    if (Pokemon.PokemonParty.internalList.Count > 2) {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("you have more then 2 pokemon so you can fight the first gym leader");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        GymLeader1();
+                        GoodValue2 = true;
+                    }
+                    else {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("come back when you have more then 2 pokemon so you cam fight the gym leader");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        TallGrass();
+                        GoodValue2 = true;
+                    }
+                    break;
+
+                    default:
+                    Console.WriteLine("Please try again");
+                    GoodValue2 = false;
+                    Game = Console.ReadKey(true).Key;
+                    continue;
                 
+                }
             }
+            
             
             
          
@@ -194,57 +253,147 @@ namespace Program {
         //internal static Pokemon Charmander1 { get => Charmander; set => Charmander = value; }
 
         public static void TallGrass() {
-            var pokemonNumber = Pokemon.FindPokemon;
+            var pokemonNumber = Pokemon.FindPokemon();
             Pokemon.IsWild = true;
             switch (pokemonNumber) {
                 case 1:
+                Wild.Add(Pigy);
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Your now Fighting {MainClass.Pigy.Name}\nand it has {MainClass.Cterpie.oHealth} health it's level is: {MainClass.Pigy.Level}");
+                Console.WriteLine($"Your now Fighting {Pokemon.WildParty.WildList[0].Name}\nand it has {Pokemon.WildParty.WildList[0].oHealth} health it's level is: {Pokemon.WildParty.WildList[0].Level}");
                 Console.ForegroundColor = ConsoleColor.White;
                 PlayerMove();
                 // int PP = 2;
                 // fractem 
 
                 
-                Pokemon.IsWild = false;
+                Pokemon.IsWild = true;
                 
                 //Console.WriteLine($"Now its {Pigy.Name}'s turn");
                 
                 
                 if (Pokemon.PokemonParty.internalList[0].oHealth <= 0 && Pokemon.PokemonParty.internalList[1].oHealth <= 0 && Pokemon.PokemonParty.internalList[2].oHealth <= 0) {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("All of your party members has fanited GAME OVER");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Environment.Exit(1);
                 }
-                // if (Pigy.oHealth <= 0 || Pigy.oHealth < 0) {
-                //     Pokemon.XpLvlCal();
-                //     Console.WriteLine($"you knocked out Pigy and won! and you got {Pokemon.XpLvlCal}");
-                // }
                 
-
-                /*
-
-                >	Greater than	x > y	
-                <	Less than	    x < y
-                
-                */
-
-                //Pokemon.XpLvlCal();
                 Console.WriteLine("the end");
                 break;
 
                 case 2:
+                Wild.Add(Cterpie);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Your now Fighting {Pokemon.WildParty.WildList[0].Name}\nand it has {Pokemon.WildParty.WildList[0].oHealth} health it's level is: {Pokemon.WildParty.WildList[0].Level}");
+                Console.ForegroundColor = ConsoleColor.White;
+                PlayerMove();
+                // int PP = 2;
+                // fractem 
+
+                Pokemon.IsWild = true;
                 
+                
+                if (Pokemon.PokemonParty.internalList[0].oHealth <= 0 && Pokemon.PokemonParty.internalList[1].oHealth <= 0 && Pokemon.PokemonParty.internalList[2].oHealth <= 0) {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("All of your party members has fanited GAME OVER");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Environment.Exit(1);
+                }
                 break;
 
                 case 3:
+                Wild.Add(MainClass.Eevee);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Your now Fighting {Pokemon.WildParty.WildList[0].Name}\nand it has {Pokemon.WildParty.WildList[0].oHealth} health it's level is: {Pokemon.WildParty.WildList[0].Level}");
+                Console.ForegroundColor = ConsoleColor.White;
+                PlayerMove();
+                // int PP = 2;
+                // fractem 
+
                 
+                Pokemon.IsWild = true;
+                
+                //Console.WriteLine($"Now its {Pigy.Name}'s turn");
+                
+                
+                if (Pokemon.PokemonParty.internalList[0].oHealth <= 0 && Pokemon.PokemonParty.internalList[1].oHealth <= 0 && Pokemon.PokemonParty.internalList[2].oHealth <= 0) {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("All of your party members has fanited GAME OVER");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Environment.Exit(1);
+                }
                 break;
 
                 case 4:
+                Wild.Add(MainClass.Geodude);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Your now Fighting {Pokemon.WildParty.WildList[0].Name}\nand it has {Pokemon.WildParty.WildList[0].oHealth} health it's level is: {Pokemon.WildParty.WildList[0].Level}");
+                Console.ForegroundColor = ConsoleColor.White;
+                PlayerMove();
+                // int PP = 2;
+                // fractem 
+
                 
+                Pokemon.IsWild = true;
+                
+                //Console.WriteLine($"Now its {Pigy.Name}'s turn");
+                
+                
+                if (Pokemon.PokemonParty.internalList[0].oHealth <= 0 && Pokemon.PokemonParty.internalList[1].oHealth <= 0 && Pokemon.PokemonParty.internalList[2].oHealth <= 0) {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("All of your party members has fanited GAME OVER");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Environment.Exit(1);
+                }
                 break;
 
                 case 5:
+                Wild.Add(MainClass.Torrcat);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Your now Fighting {Pokemon.WildParty.WildList[0].Name}\nand it has {Pokemon.WildParty.WildList[0].oHealth} health it's level is: {Pokemon.WildParty.WildList[0].Level}");
+                Console.ForegroundColor = ConsoleColor.White;
+                PlayerMove();
+                // int PP = 2;
+                // fractem 
+
+                
+                Pokemon.IsWild = true;
+                
+                //Console.WriteLine($"Now its {Pigy.Name}'s turn");
+                
+                
+                if (Pokemon.PokemonParty.internalList[0].oHealth <= 0 && Pokemon.PokemonParty.internalList[1].oHealth <= 0 && Pokemon.PokemonParty.internalList[2].oHealth <= 0) {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("All of your party members has fanited GAME OVER");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Environment.Exit(1);
+                }
+                break;
+
+                case 6:
+                Wild.Add(Houndour);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Your now Fighting {Pokemon.WildParty.WildList[0].Name}\nand it has {Pokemon.WildParty.WildList[0].oHealth} health it's level is: {Pokemon.WildParty.WildList[0].Level}");
+                Console.ForegroundColor = ConsoleColor.White;
+                PlayerMove();
+                // int PP = 2;
+                // fractem 
+
+                
+                Pokemon.IsWild = true;
+                
+                //Console.WriteLine($"Now its {Pigy.Name}'s turn");
+                
+                
+                if (Pokemon.PokemonParty.internalList[0].oHealth <= 0 && Pokemon.PokemonParty.internalList[1].oHealth <= 0 && Pokemon.PokemonParty.internalList[2].oHealth <= 0) {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("All of your party members has fanited GAME OVER");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Environment.Exit(1);
+                }
+                break;
+
+                case 7:
                 
                 break;
             
@@ -252,222 +401,261 @@ namespace Program {
             
 
         }
-        
+        static bool Caught = false;
         public static void PlayerMove() {
-            bool Caught = false;
             Console.ForegroundColor = ConsoleColor.White;
+            Thread.Sleep(500);
             Console.WriteLine("Would you like too.... press the number to sleact your option \n");
             Console.ForegroundColor = ConsoleColor.Red;
+            Thread.Sleep(500);
             Console.WriteLine("fight? (1) \n");
             Console.ForegroundColor = ConsoleColor.Green;
+            Thread.Sleep(500);
             Console.WriteLine("open your Bag? (2) \n");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine($"Catch the {MainClass.Pigy.Name}? (3) \n");
+            Thread.Sleep(500);
+            Console.WriteLine($"Catch the {Pokemon.WildParty.WildList[0].Name}? (3) \n");
             Console.ForegroundColor = ConsoleColor.Blue;
+            Thread.Sleep(500);
             Console.WriteLine("Flee? (4) \n");
             Console.ForegroundColor = ConsoleColor.Green;
+            Thread.Sleep(500);
             Console.WriteLine("its your turn now");
             Console.ForegroundColor = ConsoleColor.White;
+            Thread.Sleep(500);
             
             var PlayerMove = Console.ReadKey(true).Key;
-            switch (PlayerMove) {
-                
-                case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
+            var GoodValue3 = false; // 1 : 47 make trues and nots for Playermove
+            while (!GoodValue) {
+                switch (PlayerMove) {
                     
-                Console.WriteLine(Pokemon.PokemonParty.internalList[0].Name);
-                Console.WriteLine($"you have 3 moves for {Pokemon.PokemonParty.internalList[0]} move 1: {Pokemon.PokemonParty.internalList[0].Move1_Name}\nmove 1: does {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\nmove 2: {Pokemon.PokemonParty.internalList[0].Move2_Name} and move 2 does {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\nmove 3: {Pokemon.PokemonParty.internalList[0].Move3_Name} and move 3 does {Pokemon.PokemonParty.internalList[0].Move3_Attack} damage \n");
-                Console.ForegroundColor = ConsoleColor.Red;
-                //Console.WriteLine("as a note you can only use each move 2 or 3 times so use them wisly \nso witch move would you like to use? (1) (2) (3)");
-                Console.ForegroundColor = ConsoleColor.White;
-                var AttackTurn = Console.ReadKey(true).Key;
-
-                switch (AttackTurn) {
-                    case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                    Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move1_Attack;
-                    Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\n the {Pigy.Name} is now at {Pigy.oHealth} health");
-                    if (Pigy.oHealth <= 0 || Pigy.oHealth < 0) {
-                        Console.WriteLine($"you knocked out Pigy and won! and you got :");
-                        Pokemon.XpLvlCal();
-                        break;
-                    }
-                    PokemonMove();
-                    break;
-
-                    case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                    Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move2_Attack;
-                    Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\n the {Pigy.Name} is now at {Pigy.oHealth} health");
-                    if (Pigy.oHealth <= 0 || Pigy.oHealth < 0) {
-                        Console.WriteLine($"you knocked out Pigy and won! and you got :");
-                        Pokemon.XpLvlCal();
-                        break;
-                    }
-                    PokemonMove();
-                    break;
-
-                    case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                    Pigy.oHealth -= Pokemon.PokemonParty.internalList[0].Move3_Attack;
-                    Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move3_Attack} damges\n the {Pigy.Name} is now at {Pigy.oHealth} health");
-                    if (Pigy.oHealth <= 0 || Pigy.oHealth < 0) {
-                        Console.WriteLine($"you knocked out Pigy and won! and you got :");
-                        Pokemon.XpLvlCal();
-                        break;
-                    }
-                    PokemonMove();
-                    break;
-                }
-
-                if (Pigy.oHealth <= 0 || Pigy.oHealth < 0) {
-                    Console.WriteLine($"you knocked out Pigy and won! and you got :");
-                    Pokemon.XpLvlCal();
-                    break;
-                }
-
                 
-                
-                break; // for end of fighting case
+                    case ConsoleKey.D1 or ConsoleKey.NumPad1: // to fight the pokemon
+                        
+                    Console.WriteLine(Pokemon.PokemonParty.internalList[0].Name);
+                    Console.WriteLine($"you have 3 moves for {Pokemon.PokemonParty.internalList[0]}\n move 1: {Pokemon.PokemonParty.internalList[0].Move1_Name}\nmove 1: does {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\nmove 2: {Pokemon.PokemonParty.internalList[0].Move2_Name} and move 2 does {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\nmove 3: {Pokemon.PokemonParty.internalList[0].Move3_Name} and move 3 does {Pokemon.PokemonParty.internalList[0].Move3_Attack} damage \n");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Thread.Sleep(500);
+                    Console.WriteLine("as a note you can only use each move 2 or 3 times so use them wisly \nso witch move would you like to use? (1) (2) (3) but the pp is a work in progress so use any move as much as you want");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Thread.Sleep(100);
 
-                case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
-                Console.WriteLine($"what do you want to do in your bag? you have ");
-                foreach (var item in Bag.PokemonBag.Pokebag) {
-                    Console.WriteLine(item);
-                    Thread.Sleep(250);
-                }
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("would you like to use a item on your pokemon too heal them? (1)");
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("or do nothing (2)");
-                Console.ForegroundColor = ConsoleColor.White;
-                var PlayerBag = Console.ReadKey(true).Key;
-                Console.ForegroundColor = ConsoleColor.White;
-                switch (PlayerBag) {
-                    case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                    foreach (var item in Pokemon.PokemonParty.internalList) {
-                        Console.WriteLine(item);
-                        Thread.Sleep(250);
-                    }
-                    if (Pokemon.PokemonParty.internalList[0].oHealth > Pokemon.PokemonParty.internalList[0].MaxHealth){
-                        Console.WriteLine("Work in progress");
-                        // Console.ForegroundColor = ConsoleColor.Green;
-                        // Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[0]} (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
-                        // Console.ForegroundColor = ConsoleColor.Red;
-                        // Console.WriteLine($"")
-                        // Console.ForegroundColor = ConsoleColor.Red;
-                        // Console.WriteLine($"");
-                        // Console.ForegroundColor = ConsoleColor.Red;
-                        // Console.WriteLine($"");
-                        // Console.ForegroundColor = ConsoleColor.White;
-                        var Heal = Console.ReadKey(true).Key;
-                        switch (Heal)
-                        {
-                            case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                            Console.WriteLine("");
-                            Pokemon.PokemonParty.internalList[0].oHealth += 20;
-                            Bag.PokemonBag.Pokebag[0].Amount --;
-                            Console.WriteLine($"you now have {Bag.PokemonBag.Pokebag[0].Amount}");
+                    var AttackTurn = Console.ReadKey(true).Key;
+                    switch (AttackTurn) {
+                        case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                        Pokemon.WildParty.WildList[0].oHealth -= Pokemon.PokemonParty.internalList[0].Move1_Attack;
+                        Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move1_Attack} damage\n the {Pokemon.WildParty.WildList[0].Name} is now at {Pokemon.WildParty.WildList[0].oHealth} health");
+                        if (Pokemon.WildParty.WildList[0].oHealth <= 0 || Pokemon.WildParty.WildList[0].oHealth < 0) {
+                            Console.WriteLine($"you knocked out {Pokemon.WildParty.WildList[0].Name} and won! and you got :");
+                            Pokemon.WildParty.WildList[0].oHealth = 0;
+                            Pokemon.WildParty.WildList[0].oHealth += Pokemon.WildParty.WildList[0].MaxHealth;
+                            Pokemon.XpLvlCal();
+                            something();
                             break;
                         }
-                    }
-                    break;
-                    case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                    Console.WriteLine("you did nothing");
-                    break;
-                    
-                }
-                //PokemonMove();
-                break; // end of BAG case.
-
-                case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
-                Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
-                if (Pokemon.PokemonParty.internalList.Count == 6 && CatchOrNotCatched <= 50f) {
-                    Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
-                    //Caught = false;
-                }
-                if (Pokemon.PokemonParty.internalList.Count < 6 && CatchOrNotCatched >= 50f) {
-                    Console.WriteLine($"You Catched the {MainClass.Pigy.Name}!! {MainClass.Pigy.Name} is now in your party");
-                    party.Add(Pigy);
-                    Caught = true;
-                    foreach (var item in Pokemon.PokemonParty.internalList)
-                    {
-                        Console.WriteLine(item);
-                        Thread.Sleep(250);
-                    }
-                    Pokemon.XpLvlCal();
-                    
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Would you like to go back into some tall grass and look for pokemon to battle (1)");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("or go challeng the first gym leader (2)");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("end the program (3)");
-                    Console.ForegroundColor = ConsoleColor.White;
-
-                    var Faild = Console.ReadKey(true).Key;
-                    switch (Faild) {
-                        case ConsoleKey.D1 or ConsoleKey.NumPad1:
-                        Console.WriteLine("your now going BACK into some tall grass to look for pokmon to battle");
-                        TallGrass();
+                        PokemonMove();
                         break;
 
                         case ConsoleKey.D2 or ConsoleKey.NumPad2:
-                        GymLeader1();
+                        Pokemon.WildParty.WildList[0].oHealth -= Pokemon.PokemonParty.internalList[0].Move2_Attack;
+                        Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move2_Attack} damage\n the {Pokemon.WildParty.WildList[0].Name} is now at {Pokemon.WildParty.WildList[0].oHealth} health");
+                        if (Pokemon.WildParty.WildList[0].oHealth <= 0 || Pokemon.WildParty.WildList[0].oHealth < 0) {
+                            Console.WriteLine($"you knocked out {Pokemon.WildParty.WildList[0].Name} and won! and you got :");
+                            Pokemon.WildParty.WildList[0].oHealth = 0;
+                            Pokemon.WildParty.WildList[0].oHealth += Pokemon.WildParty.WildList[0].MaxHealth;
+                            Pokemon.XpLvlCal();
+                            something();
+                            break;
+                        }
+                        PokemonMove();
                         break;
-                        
+
                         case ConsoleKey.D3 or ConsoleKey.NumPad3:
-                        Console.Clear();
-                        Environment.Exit(1);
-                        break;                           
+                        Pokemon.WildParty.WildList[0].oHealth -= Pokemon.PokemonParty.internalList[0].Move3_Attack;
+                        Console.WriteLine($"You used {Pokemon.PokemonParty.internalList[0].Move1_Name} and did {Pokemon.PokemonParty.internalList[0].Move3_Attack} damges\n the {Pokemon.WildParty.WildList[0].Name} is now at {Pokemon.WildParty.WildList[0].oHealth} health");
+                        if (Pokemon.WildParty.WildList[0].oHealth <= 0 || Pokemon.WildParty.WildList[0].oHealth < 0) {
+                            Console.WriteLine($"you knocked out {Pokemon.WildParty.WildList[0].Name} and won! and you got :");
+                            Pokemon.WildParty.WildList[0].oHealth = 0;
+                            Pokemon.WildParty.WildList[0].oHealth += Pokemon.WildParty.WildList[0].MaxHealth;
+                            Pokemon.XpLvlCal();
+                            something();
+                            break;
+                        }
+                        
+                        PokemonMove();
+                        break;
                     }
 
-                }
-                
-                break; // end of catch case
+                    // if (Pokemon.WildParty.WildList[0].oHealth <= 0 || Pokemon.WildParty.WildList[0].oHealth < 0) {
+                    //     Console.WriteLine($"you knocked out {Pokemon.WildParty.WildList[0].Name} and won! and you got :");
+                    //     Pokemon.XpLvlCal();
+                    //     break;
+                    // }
 
-                case ConsoleKey.D4 or ConsoleKey.NumPad4: // flee
-                if (FleeOrNotToFlee < 50f) {
-                    Console.WriteLine("you got away!");
-                    Console.WriteLine(FleeOrNotToFlee);
-                    Pokemon.XpLvlCal();
-                    TallGrass();
+                    
+                    
+                    break; // for end of fighting case
+
+                    case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
+                    Console.WriteLine($"what do you want to do in your bag? you have ");
+                    foreach (var item in Bag.PokemonBag.Pokebag) {
+                        Console.WriteLine(item);
+                        Thread.Sleep(250);
+                    }
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("would you like to use a item on your pokemon too heal them? (1)");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Thread.Sleep(500);
+                    Console.WriteLine("or do nothing (2)");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Thread.Sleep(100);
+                    var PlayerBag = Console.ReadKey(true).Key;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    switch (PlayerBag) {
+                        case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                        foreach (var item in Pokemon.PokemonParty.internalList) {
+                            Console.WriteLine(item);
+                            Thread.Sleep(250);
+                        }
+                        if (Pokemon.PokemonParty.internalList[0].oHealth > Pokemon.PokemonParty.internalList[0].MaxHealth){
+                            Console.WriteLine("Work in progress please come back later");
+                            // Console.ForegroundColor = ConsoleColor.Green;
+                            // Console.WriteLine($"what would you like to use on your {Pokemon.PokemonParty.internalList[0]}? you have: (1) {Bag.PokemonBag.Pokebag[0]} (2) {Bag.PokemonBag.Pokebag[1]} or (3) {Bag.PokemonBag.Pokebag[2]}");
+                            // Console.ForegroundColor = ConsoleColor.Red;
+                            // Console.WriteLine($"")
+                            // Console.ForegroundColor = ConsoleColor.Red;
+                            // Console.WriteLine($"");
+                            // Console.ForegroundColor = ConsoleColor.Red;
+                            // Console.WriteLine($"");
+                            // Console.ForegroundColor = ConsoleColor.White;
+                            var Heal = Console.ReadKey(true).Key;
+                            switch (Heal)
+                            {
+                                case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                                Console.WriteLine("work in porgress please come back later");
+                                Pokemon.PokemonParty.internalList[0].oHealth += 20;
+                                Bag.PokemonBag.Pokebag[0].Amount --;
+                                Console.WriteLine($"you now have {Bag.PokemonBag.Pokebag[0].Amount}");
+                                break;
+                            }
+                        }
+                        break;
+                        case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                        Console.WriteLine("you did nothing");
+                        break;
+                        
+                    }
+                    //PokemonMove();
+                    break; // end of BAG case.
+
+                    case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
+                    Console.WriteLine($"there are {Pokemon.PokemonParty.internalList.Count} in your party as of right now");
+                    if (Pokemon.PokemonParty.internalList.Count == 6 && CatchOrNotCatched <= 50f) {
+                        Console.WriteLine("you alr have 6 pokemon in your party so you canr cant get anymore");
+                        //Caught = false;
+                    }
+                    // if (Pokemon.WildParty.WildList[0].oHealth < )
+                    // {
+                        
+                    // }
+                    if (Pokemon.PokemonParty.internalList.Count < 6 && CatchOrNotCatched >= 50f) {
+                        party.Add(Pokemon.WildParty.WildList[0]);
+                        Wild.Remove(Pokemon.WildParty.WildList[0]);
+                        Console.WriteLine($"You Catched the {Pokemon.WildParty.WildList[0].Name}!! {Pokemon.WildParty.WildList[0].Name} is now in your party");
+                        Console.WriteLine("Your party has now: ");
+                        Caught = true;
+                        foreach (var item in Pokemon.PokemonParty.internalList)
+                        {
+                            Console.WriteLine(item);
+                            Thread.Sleep(250);
+                        }
+                        Pokemon.XpLvlCal();
+                        
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Would you like to go back into some tall grass and look for pokemon to battle (1)");
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("or go challeng the first gym leader (2)");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("end the program (3)");
+                        Console.ForegroundColor = ConsoleColor.White;
+
+                        var Faild = Console.ReadKey(true).Key;
+                        var GoodValue4 = false;
+                        while (!GoodValue4) {
+                            switch (Faild) {
+                                case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                                Console.WriteLine("your now going BACK into some tall grass to look for pokmon to battle");
+                                TallGrass();
+                                GoodValue4 = true;
+                                break;
+
+                                case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                                GymLeader1();
+                                GoodValue4 = true;
+                                break;
+                                
+                                case ConsoleKey.D3 or ConsoleKey.NumPad3:
+                                Console.Clear();
+                                Environment.Exit(1);
+                                GoodValue4 = true;
+                                break;
+
+                                default:
+                                Console.WriteLine("Please pick again");
+                                Faild = Console.ReadKey(true).Key;
+                                continue;                         
+                            }
+                        }
+                    }
+                    
+                    break; // end of catch case
+
+                    case ConsoleKey.D4 or ConsoleKey.NumPad4: // flee
+                    if (FleeOrNotToFlee < 50f) {
+                        Console.WriteLine("you got away!");
+                        Pokemon.XpLvlCal();
+                        
+                    }
+                    else if (FleeOrNotToFlee > 50f) {
+                        Console.WriteLine("you didin't get away");
+                        PokemonMove();
+                    }
+                    break;
                 }
-                else if (FleeOrNotToFlee > 50f) {
-                    Console.WriteLine("you didin't get away");
-                    Console.WriteLine(FleeOrNotToFlee);
-                    PokemonMove();
-                }
-                break;
-            
-            
             }
+            
         }
+
+        //public static int Percent5 = Pokemon.WildParty.WildList[0].oHealth / 50 * 100;
         
         public static void PokemonMove() {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("its now Pigy's turn");
+            Console.WriteLine($"its now {Pokemon.WildParty.WildList[0].Name} turn");
             Console.ForegroundColor = ConsoleColor.White;
             switch (SystemMove) {
                 case 1: // move 1
-                Console.WriteLine($"Pigy uses {Pigy.Move1_Name} and it does {Pigy.Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move1_Attack;
+                Console.WriteLine($"{Pokemon.WildParty.WildList[0].Name} uses {Pokemon.WildParty.WildList[0].Move1_Name} and it does {Pokemon.WildParty.WildList[0].Move1_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
+                Pokemon.PokemonParty.internalList[0].oHealth -= Pokemon.WildParty.WildList[0].Move1_Attack;
                 Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
                 PlayerMove();
                 break;
 
                 case 2: // move 2 
-                Console.WriteLine($"Pigy uses {Pigy.Move2_Name} and it does {Pigy.Move2_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
+                Console.WriteLine($"{Pokemon.WildParty.WildList[0].Name} uses {Pokemon.WildParty.WildList[0].Move2_Name} and it does {Pokemon.WildParty.WildList[0].Move2_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
                 Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move2_Attack;
                 Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
                 PlayerMove();
                 break;
                 
                 case 3: // move 3
-                Console.WriteLine($"Pigy uses {Pigy.Move3_Name} and it does {Pigy.Move3_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
-                Pokemon.PokemonParty.internalList[0].oHealth -= Pigy.Move3_Attack;
+                Console.WriteLine($"{Pokemon.WildParty.WildList[0].Name} uses {Pokemon.WildParty.WildList[0].Move3_Name} and it does {Pokemon.WildParty.WildList[0].Move3_Attack} Damage to your {Pokemon.PokemonParty.internalList[0].Name}");
+                Pokemon.PokemonParty.internalList[0].oHealth -= Pokemon.WildParty.WildList[0].Move3_Attack;
                 Console.WriteLine($"your {Pokemon.PokemonParty.internalList[0]} has {Pokemon.PokemonParty.internalList[0].oHealth} out of {Pokemon.PokemonParty.internalList[0]}");
                 PlayerMove();
                 break;
 
                 case 4: // do nothing
-                Console.WriteLine("Pigy did nothing. its your turn now");
+                Console.WriteLine($"{Pokemon.WildParty.WildList[0]} did nothing. its your turn now");
                 PlayerMove();
                 break;
             }
@@ -478,17 +666,85 @@ namespace Program {
             }
         }
         public static void GymLeader1() {
-            // make 3 new pokemon for a gym battle
+            Pokemon.WildParty.WildList.Add(Kyogre);
+            Pokemon.WildParty.WildList.Add(Swampert);
+            Pokemon.WildParty.WildList.Add(Inteleon);
+            Pokemon.WildParty.WildList.Add(Kyogre);
+            Console.WriteLine($"there are {Pokemon.WildParty.WildList.Count}");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"You are now battleing the water gym leader has 3 pokemon 1: {Pokemon.WildParty.WildList[0].Name} and is lvl {Pokemon.WildParty.WildList[0].Level} and has {Pokemon.WildParty.WildList[0].oHealth} health");
+            Thread.Sleep(420);
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"You are now battleing the water gym leader has 3 pokemon 2: {Pokemon.WildParty.WildList[1].Name} and is lvl {Pokemon.WildParty.WildList[1].Level} and has {Pokemon.WildParty.WildList[1].oHealth} health");
+            Thread.Sleep(420);
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine($"You are now battleing the water gym leader has 3 pokemon 3: {Pokemon.WildParty.WildList[2].Name} and is lvl {Pokemon.WildParty.WildList[2].Level} and has {Pokemon.WildParty.WildList[2].oHealth} health");
+            Console.ForegroundColor = ConsoleColor.White;
+            // into ^
+            // 
+            // Console.ForegroundColor = ConsoleColor.White;
+            // Console.WriteLine("Would you like too.... press the number to sleact your option \n");
+            // Console.ForegroundColor = ConsoleColor.Red;
+            // Console.WriteLine("fight? (1) \n");
+            // Console.ForegroundColor = ConsoleColor.Green;
+            // Console.WriteLine("open your Bag? (2) \n");
+            // Console.ForegroundColor = ConsoleColor.Blue;
+            // Console.WriteLine("Flee? (4) \n");
+            // Console.ForegroundColor = ConsoleColor.Green;
+            
+            //Console.WriteLine("its your turn now");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            // turn combat start ^
+
+            while (Pokemon.PokemonParty.internalList[0].oHealth <= 0 || Pokemon.WildParty.WildList[1].oHealth < 0 || Pokemon.PokemonParty.internalList[2].oHealth <= 0|| Pokemon.WildParty.WildList[0].oHealth <= 0 || Pokemon.WildParty.WildList[1].oHealth <= 0 || Pokemon.WildParty.WildList[2].oHealth <= 0) {
+                
+                PlayerMove();
+                PokemonMove();
+            }
+            
+
+            
+
+
+
+
+            // combat
         } 
+        public static void something() {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Would you like to go back into some tall grass and look for pokemon to battle (1)");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("or go challeng the first gym leader (2)");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("end the program (3)");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            var feild = Console.ReadKey(true).Key;
+            switch (feild) {
+                case ConsoleKey.D1 or ConsoleKey.NumPad1:
+                Console.WriteLine("your now going BACK into some tall grass to look for pokmon to battle");
+                TallGrass();
+                break;
+
+                case ConsoleKey.D2 or ConsoleKey.NumPad2:
+                GymLeader1();
+                break;
+                
+                case ConsoleKey.D3 or ConsoleKey.NumPad3:
+                Console.Clear();
+                Environment.Exit(1);
+                break;                           
+            }
+        }
     }
 
 
     
 
-    class Pokemon {
+    public class Pokemon {
         public int MaxHealth { get; set; } = Random.Shared.Next(39, 69);
         public int oHealth { get; set; }
-
         public double Exp { get; set; }
         public int Level { get; set; }
         public string Name { get; set; }
@@ -532,8 +788,8 @@ namespace Program {
         public static bool PlayerBag = false;
         public static bool PlayerFlee = false;
 
-        public static int FindPokemon = 1;
-        //public static int FindPokemon() => Random.Shared.Next(1, 1);
+        //public static int FindPokemon = 1;
+        public static int FindPokemon() => Random.Shared.Next(1, 8);
         public static int WildPoekmonHealth() => Random.Shared.Next(39, 69);
         public static int GymPoekmonHealth() => Random.Shared.Next(110, 230);
         public static int RndHealth =  Random.Shared.Next(39, 69);
@@ -557,62 +813,59 @@ namespace Program {
 
         public static void XpLvlCal() {
 
-            var A = 0;
-            var B = Pokemon.PokemonParty.internalList[0].EXpCase;
-            var E = 1;
-            var F = (int)1.2;
-            var L = 0;
-            var L2 = Pokemon.PokemonParty.internalList[0].Level;
-            var S = Pokemon.PokemonParty.internalList.Count;
-            var P = 0;
-            var V = 1;
-            var T = (int)1.5;
-            var XP = 0;
-
-            var val0 = 0;
-            var val1 = 0;
+            double A = 0; 
+            double E = 1;
+            double F = 2;
+            double L = 0;
+            double L2 = Pokemon.PokemonParty.internalList[0].Level; 
+            double P = 0;
+            double V = 1;
+            double XP;
+            double val0;
+            double val1;
 
 
-            val0 = B * L;
-            val1 = 7 * S;
+            val0 = Pokemon.PokemonParty.internalList[0].EXpCase + 0;
+            val1 = 7 * Pokemon.PokemonParty.internalList.Count;
 
-            XP = val0 / val1 * E * A * T * P * F * V * 2;
+            XP = E + A + 1.6 + P + F + V * 2.1;
 
-            if (IsWild == true) {
+            switch (IsWild) {
+                case true:
                 A = 1;
-            }
-            if(IsWild == false) {
-                A = (int)1.5;
-            }
+                break;
 
-            if(PlayerWon == true) {
+                case false:
+                A = 1.5;
+                break;;
+            }
+            switch (PlayerWon) {
+                case true:
                 P = Pokemon.PokemonParty.internalList[0].Level;
-            }
+                break;
 
-            if (PlayerWon == false) {
-                P = (int)1.2;
+                case false:
+                P = 1.2;
+                break;
             }
  
-           
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"All of your non fainted pokemon got {XP}");
 
 
             if (Pokemon.PokemonParty.internalList.Count == 1 && Pokemon.PokemonParty.internalList[0].oHealth > 0 ) {
                 Pokemon.PokemonParty.internalList[0].Exp += XP;
             }
-            if (Pokemon.PokemonParty.internalList.Count == 2 && Pokemon.PokemonParty.internalList[0].oHealth > 0 && Pokemon.PokemonParty.internalList[1].oHealth > 0)
-            {
+            if (Pokemon.PokemonParty.internalList.Count == 2 && Pokemon.PokemonParty.internalList[0].oHealth > 0 && Pokemon.PokemonParty.internalList[1].oHealth > 0) {
                 Pokemon.PokemonParty.internalList[0].Exp += XP;
                 Pokemon.PokemonParty.internalList[1].Exp += XP;
             }
-            if (Pokemon.PokemonParty.internalList.Count == 3 && Pokemon.PokemonParty.internalList[0].oHealth > 0 && Pokemon.PokemonParty.internalList[1].oHealth > 0 && Pokemon.PokemonParty.internalList[2].oHealth > 0)
-            {
+            if (Pokemon.PokemonParty.internalList.Count == 3 && Pokemon.PokemonParty.internalList[0].oHealth > 0 && Pokemon.PokemonParty.internalList[1].oHealth > 0 && Pokemon.PokemonParty.internalList[2].oHealth > 0) {
                 Pokemon.PokemonParty.internalList[0].Exp += XP;
                 Pokemon.PokemonParty.internalList[1].Exp += XP;
                 Pokemon.PokemonParty.internalList[2].Exp += XP;
             }
-            if (Pokemon.PokemonParty.internalList.Count == 4 && Pokemon.PokemonParty.internalList[0].oHealth > 0 && Pokemon.PokemonParty.internalList[1].oHealth > 0 && Pokemon.PokemonParty.internalList[2].oHealth > 0 && Pokemon.PokemonParty.internalList[3].oHealth > 0)
-            {
+            if (Pokemon.PokemonParty.internalList.Count == 4 && Pokemon.PokemonParty.internalList[0].oHealth > 0 && Pokemon.PokemonParty.internalList[1].oHealth > 0 && Pokemon.PokemonParty.internalList[2].oHealth > 0 && Pokemon.PokemonParty.internalList[3].oHealth > 0) {
                 Pokemon.PokemonParty.internalList[0].Exp += XP;
                 Pokemon.PokemonParty.internalList[1].Exp += XP;
                 Pokemon.PokemonParty.internalList[2].Exp += XP;
@@ -706,6 +959,31 @@ namespace Program {
                 internalList.Remove(pokemon);
             }
         }
+
+        public class WildParty : IReadOnlyList<Pokemon> {
+            
+            public static List<Pokemon> WildList = new List<Pokemon>();
+
+            Pokemon IReadOnlyList<Pokemon>.this[int index] => WildList[index];
+
+            public int Count => WildList.Count;
+
+            public IEnumerator GetEnumerator() {
+                return WildList.GetEnumerator();
+            }
+
+            IEnumerator<Pokemon> IEnumerable<Pokemon>.GetEnumerator() {
+                return WildList.GetEnumerator();
+            }
+
+            public void Add(Pokemon pokemon) {
+                WildList.Add(pokemon);
+            }
+
+            public void Remove(Pokemon pokemon) {
+                WildList.Remove(pokemon);
+            }
+        }
     }
 
         public class Bag {
@@ -764,26 +1042,4 @@ namespace Program {
             }
         }
     }       
-}   
-        // TODO: Implement the IReadOnlyList interface to let other classes read from your internal list. VS can auto-do this for you. 
-        // Why not implement IList directly? You may want to constrain the way pokemon are added to the party in a way that is not expected for a regular list interface. 
-
-        /*Do you see those angle brackets? < and > ? Those are indicating generic type arguments.
-        But Generics are a whole big branch and you don't have to start with that just now.
-        This lets you have a list of pokemon
-        And is a way that you can reference the type of other classes.
-        You could do it differently, since there's only up to 6 pokemon in a party.
-        */
-
-
-/* 
-
-lvl system idea #1: at the end of each turn we put a check if the ex went up and if so then check for how much and if its over the amount then incrsce lvl by 1 and add the leftover? somehow? and if its for a pokemin then then if(Pokemon_Name.Exp >= number || == to number) { then do this}
-
-combat turns idea #1: ask the player if they want too do 1 of 3 things and do 3 checks 1 for attacking 2 for bag and 3 for trying to flee. 
-
-flee idea #1: make a new method for fleeing and insitlze a new random and name it flee chance and if its higher then 65 then you flee or if its lower then 65 you have to stay and then the turn moves on too the pokemons turn
-
-bag idea #1: Make a new dict with a thruple with the name, item, amount, discritpion, funition (look up if you can put a funition thruple)
-
-*/
+}
