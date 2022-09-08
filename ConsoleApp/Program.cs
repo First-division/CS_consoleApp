@@ -426,7 +426,7 @@ namespace Program {
             
             var PlayerMove = Console.ReadKey(true).Key;
             var GoodValue3 = false; // 1 : 47 make trues and nots for Playermove
-            while (!GoodValue) {
+            while (!GoodValue3) {
                 switch (PlayerMove) {
                     
                 
@@ -454,6 +454,7 @@ namespace Program {
                             break;
                         }
                         PokemonMove();
+                        GoodValue3 = true;
                         break;
 
                         case ConsoleKey.D2 or ConsoleKey.NumPad2:
@@ -493,7 +494,7 @@ namespace Program {
                     // }
 
                     
-                    
+                    GoodValue3 = true;
                     break; // for end of fighting case
 
                     case ConsoleKey.D2 or ConsoleKey.NumPad2: // bag
@@ -546,6 +547,7 @@ namespace Program {
                         
                     }
                     //PokemonMove();
+                    GoodValue3 = true;
                     break; // end of BAG case.
 
                     case ConsoleKey.D3 or ConsoleKey.NumPad3: // catch poekmon
@@ -608,6 +610,7 @@ namespace Program {
                         }
                     }
                     
+                    GoodValue3 = true;
                     break; // end of catch case
 
                     case ConsoleKey.D4 or ConsoleKey.NumPad4: // flee
@@ -622,8 +625,7 @@ namespace Program {
                     }
                     break;
                 }
-            }
-            
+            } 
         }
 
         //public static int Percent5 = Pokemon.WildParty.WildList[0].oHealth / 50 * 100;
@@ -693,7 +695,7 @@ namespace Program {
             // Console.ForegroundColor = ConsoleColor.Green;
             
             //Console.WriteLine("its your turn now");
-            Console.ForegroundColor = ConsoleColor.White;
+            // Console.ForegroundColor = ConsoleColor.White;
 
             // turn combat start ^
 
